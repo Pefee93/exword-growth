@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-stone-900: #1c1917;
+  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'Poppins', sans-serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer utilities {
+  .hero-glass {
+    background: rgba(50, 60, 70, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0d1117;
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animations that we previously wrote in Vanilla CSS */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-down {
+  animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.anim-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.anim-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.anim-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.anim-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.anim-delay-1000 {
+  animation-delay: 1.0s;
+}
+
+.anim-delay-1200 {
+  animation-delay: 1.2s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
