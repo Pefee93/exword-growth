@@ -31,7 +31,10 @@ export function CaseStudiesPreviewSection() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-16 md:gap-20">
 
                 {/* Left Title Section - Vertically centered vs the list */}
-                <div className="flex-shrink-0 md:w-1/3 text-center md:text-left">
+                <div className="flex-shrink-0 md:w-1/3 text-center md:text-left relative">
+                    <div className="hidden md:flex absolute -top-8 left-0 items-center gap-4 animate-fade-in anim-delay-500">
+                        <span className="font-sans text-[10px] font-semibold tracking-[0.2em] text-[#1B0624]/40 uppercase opacity-80">[ Selected Works ]</span>
+                    </div>
                     <h2 className="font-['Instrument_Serif'] font-light text-[48px] md:text-[64px] lg:text-[80px] text-[#1B0624] leading-[0.9] tracking-tight whitespace-nowrap">
                         Case<br className="hidden md:block" /> Studies
                     </h2>
@@ -54,7 +57,7 @@ export function CaseStudiesPreviewSection() {
                                 className="block w-full bg-white rounded-3xl p-6 md:p-8 lg:p-10 border border-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:translate-y-[4px] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] no-underline cursor-pointer"
                             >
                                 <div className="flex flex-row items-center justify-between gap-4">
-                                    <span className="font-sans text-[28px] md:text-[36px] lg:text-[48px] text-[#1B0624] font-medium tracking-tight leading-none group-hover:translate-x-3 transition-transform duration-300">
+                                    <span className="font-sans text-[28px] md:text-[36px] lg:text-[48px] text-[#1B0624] font-medium tracking-tight leading-none group-hover:translate-x-4 group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
                                         {study.name}
                                     </span>
 

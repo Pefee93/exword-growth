@@ -16,6 +16,54 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   }
+
+  /* Subtle Awwwards-style grain noise overlay */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Thin corner crosshair utilities */
+  .crosshair-tl::before,
+  .crosshair-tl::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .crosshair-tl::before {
+    top: 0;
+    left: -10px;
+    width: 20px;
+    height: 1px;
+  }
+
+  .crosshair-tl::after {
+    top: -10px;
+    left: 0;
+    width: 1px;
+    height: 20px;
+  }
+
+  .crosshair-tr::before,
+  .crosshair-tr::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .crosshair-tr::before {
+    top: 0;
+    right: -10px;
+    width: 20px;
+    height: 1px;
+  }
+
+  .crosshair-tr::after {
+    top: -10px;
+    right: 0;
+    width: 1px;
+    height: 20px;
+  }
 }
 
 body {

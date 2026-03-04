@@ -49,7 +49,10 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#fbfbf9] w-full min-h-screen overflow-x-hidden">
+    <div className="bg-[#fbfbf9] w-full min-h-screen overflow-x-hidden relative">
+
+      {/* Global Subtle Noise Overlay for organic texture */}
+      <div className="pointer-events-none fixed inset-0 z-[100] h-full w-full opacity-[0.015] mix-blend-multiply bg-noise" />
 
       {/* Header (Sticky & Frosted Glass on Scroll) */}
       <header
@@ -208,7 +211,13 @@ function App() {
 
       {/* Structured "Designed to Convert" Section modeled after duna.com */}
       <section className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-12 pt-4 pb-32">
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-16 relative">
+
+          <div className="flex items-center gap-4 animate-fade-in anim-delay-500">
+            <span className="font-sans text-[10px] font-semibold tracking-[0.2em] text-[#1B0624]/40 uppercase opacity-80">[ Architecture ]</span>
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-black/10 to-transparent" />
+          </div>
+
           <h2 className="font-['Instrument_Serif'] font-light text-[44px] md:text-[56px] text-[#1B0624] leading-[1.1] tracking-tight max-w-[800px]">
             Designed to convert.<br />Built to scale.
           </h2>
@@ -230,9 +239,9 @@ function App() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 pt-4 border-t-0 md:border-b-0 border-black/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 pt-4 border-t-0 md:border-b-0 border-black/10 relative">
             {/* Card 1 */}
-            <div className="relative flex flex-col gap-4 p-8 md:pr-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors rounded-3xl md:rounded-none">
+            <div className="relative flex flex-col gap-4 p-8 md:pr-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl">
               <Spotlight size={180} />
               <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
                 <TrendingUp size={20} strokeWidth={1.5} />
@@ -244,7 +253,7 @@ function App() {
             </div>
 
             {/* Card 2 */}
-            <div className="relative flex flex-col gap-4 p-8 md:px-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors rounded-3xl md:rounded-none">
+            <div className="relative flex flex-col gap-4 p-8 md:px-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl md:crosshair-tl">
               <Spotlight size={180} />
               <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
                 <Globe size={20} strokeWidth={1.5} />
@@ -256,7 +265,7 @@ function App() {
             </div>
 
             {/* Card 3 */}
-            <div className="relative flex flex-col gap-4 p-8 md:pl-10 hover:bg-black/[0.015] transition-colors rounded-3xl md:rounded-none">
+            <div className="relative flex flex-col gap-4 p-8 md:pl-10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl crosshair-tr">
               <Spotlight size={180} />
               <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
                 <BarChart3 size={20} strokeWidth={1.5} />
