@@ -2,7 +2,38 @@ import { useState, useEffect } from 'react';
 import AnoAI from './components/ui/animated-shader-background';
 import { Spotlight } from './components/ui/spotlight';
 import { Marquee } from './components/ui/marquee';
+import { FeatureSteps } from './components/ui/feature-section';
+import TestimonialSection from './components/ui/testimonials-section';
+import { Footer } from './components/ui/footer';
+import { CaseStudiesPreviewSection } from './components/ui/case-studies-preview';
 import { TrendingUp, Globe, BarChart3 } from 'lucide-react';
+
+const servicesFeatures = [
+  {
+    step: 'Service 1',
+    title: 'AEO-ready content & search visibility',
+    content: 'We build and optimize content so answer engines and search systems can confidently use you as the source. Think: question-led playbooks, feature pages, and resource hubs that directly answer what your buyers ask at each stage.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    step: 'Service 2',
+    title: 'Community positioning',
+    content: 'We help you show up consistently and credibly in the online communities that shape B2B decisions—like Reddit, LinkedIn, Hacker News, and other niche forums in your market. We turn e-word-of-mouth into trust, traffic, and signups.',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    step: 'Service 3',
+    title: 'Conversion-focused web journeys',
+    content: 'We realign your homepage, pricing, and key product pages with how B2B buyers actually research, evaluate, and decide—reducing friction. Clear paths and AEO-friendly structures give answers fast.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'
+  },
+  {
+    step: 'Service 4',
+    title: 'Measurement, learning, and iteration',
+    content: 'We track what matters across the full funnel: contribution of organic and AEO visibility to leads, opportunities, and revenue—not just vanity traffic. Every month, you get concrete experiments based on real behavior.',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop'
+  }
+];
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +73,7 @@ function App() {
               className="h-[26px] w-auto transition-all duration-300 group-hover:scale-105"
               style={{ filter: isPastHero ? 'brightness(0)' : 'brightness(0) invert(1)' }}
             />
-            <span className={`font-['Instrument_Serif'] text-[24px] mt-1 font-normal tracking-tight leading-none transition-colors duration-300 ${isPastHero ? 'text-[#1B0624]' : 'text-white'}`}>
+            <span className={`font-sans text-[21px] font-light tracking-wide leading-none transition-colors duration-300 ${isPastHero ? 'text-[#1B0624]' : 'text-white'}`}>
               ExWord Growth
             </span>
           </div>
@@ -238,6 +269,20 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Services Feature Steps */}
+      <section className="relative z-10 w-full pb-32 pt-10">
+        <FeatureSteps features={servicesFeatures} />
+      </section>
+
+      {/* Text-based Link Preview Case Studies */}
+      <CaseStudiesPreviewSection />
+
+      {/* Testimonials */}
+      <TestimonialSection />
+
+      {/* Footer Seamlessly Blending */}
+      <Footer />
 
     </div>
   )
