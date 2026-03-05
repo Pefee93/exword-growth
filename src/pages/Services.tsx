@@ -88,7 +88,7 @@ export default function Services() {
                     </p>
                 </div>
 
-                <div className="w-full max-w-[1200px] flex flex-col gap-8 pb-32">
+                <div className="w-full max-w-[1200px] flex flex-col gap-8 pb-16">
                     {services.map((service, index) => (
                         <div
                             key={index}
@@ -129,19 +129,18 @@ export default function Services() {
                         </div>
                     ))}
                 </div>
-            </div>
 
-            {/* Bottom Back to Home Button */}
-            <div className="w-full max-w-[1200px] flex justify-center mb-32 relative z-10 border-t border-white/10 pt-16">
-                <Link to="/" className="group relative overflow-hidden bg-white text-[#050505] font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(255,255,255,0.05)] hover:shadow-[0_4px_10px_rgba(255,255,255,0.1)] transition-shadow">
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-white flex items-center gap-2">
-                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        Back to Home
-                    </span>
-                    <div className="absolute inset-0 bg-[#1B0624] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
-                </Link>
+                {/* Bottom Back to Home Button */}
+                <div className="w-full max-w-[1200px] flex justify-center border-t border-white/10 pt-16">
+                    <Link to="/" className="group relative overflow-hidden bg-white text-[#050505] font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(255,255,255,0.05)] hover:shadow-[0_4px_10px_rgba(255,255,255,0.1)] transition-shadow">
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white flex items-center gap-2">
+                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                            Back to Home
+                        </span>
+                        <div className="absolute inset-0 bg-[#1B0624] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+                    </Link>
+                </div>
             </div>
-
         </div>
     );
 }
