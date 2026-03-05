@@ -19,7 +19,7 @@ export function ContactSection() {
         <div className="w-full px-4 md:px-8">
             <section className="relative w-full bg-[#050505] text-[#fbfbf9] px-8 md:px-16 pt-10 pb-20 overflow-hidden">
                 {/* Subtle background texture/glow */}
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+                <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none translate-y-1/2 translate-x-1/3" />
 
                 <div className="max-w-[1400px] mx-auto relative z-10">
                     <div className="flex flex-col lg:flex-row gap-20 lg:gap-32">
