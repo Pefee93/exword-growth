@@ -19,7 +19,7 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
         <div className="group relative w-full overflow-visible py-8 md:py-16 border-t border-black/10 hover:bg-black/[0.015] transition-colors duration-500 cursor-pointer">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-4 md:px-8">
                 <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
-                    <span className="font-[Instrument_Serif] text-[48px] md:text-[80px] lg:text-[100px] text-[#1B0624] font-light tracking-tight leading-none group-hover:translate-x-8 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
+                    <span className="font-sans font-semibold text-[48px] md:text-[64px] lg:text-[80px] text-[#1B0624] tracking-tight leading-none group-hover:translate-x-8 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
                         {text}
                     </span>
                 </div>
