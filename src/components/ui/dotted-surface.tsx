@@ -14,6 +14,11 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     useEffect(() => {
         if (!containerRef.current) return;
 
+        // Clean up any existing canvases left behind by React StrictMode double-rendering
+        while (containerRef.current.firstChild) {
+            containerRef.current.removeChild(containerRef.current.firstChild);
+        }
+
         const SEPARATION = 150;
         const AMOUNTX = 40;
         const AMOUNTY = 60;
@@ -135,16 +140,16 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
                 }
             });
 
-            renderer.forceContextLoss();
-            renderer.dispose();
-
-            if (containerRef.current && renderer.domElement) {
+            if (renderer.domElement && renderer.domElement.parentNode) {
                 try {
-                    containerRef.current.removeChild(renderer.domElement);
+                    renderer.domElement.parentNode.removeChild(renderer.domElement);
                 } catch (e) {
                     // Node may have already been unmounted
                 }
             }
+
+            renderer.forceContextLoss();
+            renderer.dispose();
         };
     }, [theme]);
 
