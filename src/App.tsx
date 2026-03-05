@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import AnoAI from './components/ui/animated-shader-background';
 import { Spotlight } from './components/ui/spotlight';
 import { Marquee } from './components/ui/marquee';
@@ -39,6 +39,9 @@ const servicesFeatures = [
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
+  const backgroundOpacity = useTransform(scrollY, [0, 800], [1, 0]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,13 +114,15 @@ function App() {
       </header>
 
       {/* Extra-tall absolute background that bleeds seamlessly into the next section */}
-      <div
+      <motion.div
         className="absolute top-0 left-0 right-0 h-[115vh] pointer-events-none z-0 overflow-hidden"
         style={{
           backgroundImage: "url('/assets/neom-gVDUuJaG_wM-unsplash.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center 65%',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          y: backgroundY,
+          opacity: backgroundOpacity
         }}
       >
         <AnoAI />
@@ -131,32 +136,80 @@ function App() {
           className="absolute bottom-0 left-0 right-0 h-[30vh]"
           style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(251,251,249,0.4) 70%, #fbfbf9 100%)' }}
         />
-      </div>
+      </motion.div>
 
       {/* Content Section Overlay */}
       <section className="relative z-10 flex flex-col min-h-screen">
 
         {/* Main Hero Content */}
-        <main className="flex-1 flex flex-col items-center justify-start text-center px-6 pt-[18vh] max-[768px]:pt-[12vh] max-[768px]:justify-start">
+        <main className="flex-1 flex flex-col items-center justify-start text-center px-6 pt-[22vh] max-[768px]:pt-[15vh] max-[768px]:justify-start relative z-20">
 
-          <h1
-            className="font-['Instrument_Serif'] font-light leading-[1.1] mb-5 text-white drop-shadow-xl opacity-0 animate-fade-up anim-delay-300 relative z-20"
-            style={{
-              fontSize: 'clamp(3.5rem, 8vw, 9rem)',
-              letterSpacing: '-0.03em',
-              maxWidth: '1200px'
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
             }}
+            className="flex flex-col items-center"
           >
-            AI–era organic growth<br />for your SaaS.
-          </h1>
+            <div className="overflow-hidden mb-6">
+              <motion.h1
+                variants={{
+                  hidden: { y: "100%", rotate: 2 },
+                  visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                className="font-['Instrument_Serif'] font-light leading-[1.05] text-white drop-shadow-xl"
+                style={{
+                  fontSize: 'clamp(4rem, 9vw, 10rem)',
+                  letterSpacing: '-0.04em',
+                  maxWidth: '1200px'
+                }}
+              >
+                AI–era organic
+              </motion.h1>
+            </div>
 
-          <p className="font-sans text-[12px] md:text-[14px] leading-[1.6] text-white/70 font-light tracking-wide max-w-[680px] mb-8 opacity-0 animate-fade-up anim-delay-500 max-[768px]:px-4 relative z-20">
-            Search is no longer just ten blue links. Buyers see AI overviews, answer boxes, and summaries long before they ever click a result. ExWord Growth designs SEO and GEO strategies so your product is the answer those systems trust - from Google's AI experiences to LLM-powered research tools.
-          </p>
+            <div className="overflow-hidden mb-8">
+              <motion.h1
+                variants={{
+                  hidden: { y: "100%", rotate: -2 },
+                  visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                className="font-['Instrument_Serif'] font-light leading-[1.05] text-white drop-shadow-xl"
+                style={{
+                  fontSize: 'clamp(4rem, 9vw, 10rem)',
+                  letterSpacing: '-0.04em',
+                  maxWidth: '1200px'
+                }}
+              >
+                growth for SaaS.
+              </motion.h1>
+            </div>
 
-          <button className="relative z-20 bg-white text-[#000] font-sans font-medium text-[14px] px-[22px] py-[10px] rounded-[1000px] border border-transparent cursor-pointer shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-colors duration-200 hover:bg-[#000] hover:text-[#fff] hover:border-white/20 hover:shadow-none opacity-0 animate-fade-up anim-delay-700">
-            Book a growth session
-          </button>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
+                visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1, delay: 0.5, ease: "easeOut" } }
+              }}
+              className="font-sans text-[13px] md:text-[15px] leading-[1.7] text-white/70 font-light tracking-wide max-w-[620px] mb-12 max-[768px]:px-4"
+            >
+              Search is no longer just ten blue links. Buyers see AI overviews, answer boxes, and summaries long before they ever click a result. ExWord Growth designs SEO and GEO strategies so your product is the answer those systems trust.
+            </motion.p>
+
+            <motion.button
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.8, ease: "easeOut" } }
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative overflow-hidden bg-white text-[#000] font-sans font-medium text-[15px] px-[28px] py-[12px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-none"
+            >
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Book a growth session</span>
+              <div className="absolute inset-0 bg-[#000] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+            </motion.button>
+          </motion.div>
 
         </main>
       </section>
@@ -329,13 +382,43 @@ function App() {
         </div>
       </section>
 
+      {/* Decorative connecting vertical line between sections */}
+      <div className="flex justify-center w-full relative z-10 h-32 md:h-48 overflow-hidden opacity-30">
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "100%" }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+          className="w-[1px] bg-black"
+        />
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-[#fbfbf9] px-2 font-sans font-semibold text-[8px] tracking-[0.3em] uppercase opacity-50">
+          PROCESS
+        </div>
+      </div>
+
       {/* Services Feature Steps */}
-      <section className="relative z-10 w-full pb-32 pt-10">
+      <section className="relative z-10 w-full pb-48 pt-16 mt-0">
         <FeatureSteps features={servicesFeatures} />
       </section>
 
+      {/* Decorative connecting vertical line */}
+      <div className="flex justify-center w-full relative z-10 h-32 md:h-48 overflow-hidden opacity-30">
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "100%" }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+          className="w-[1px] bg-black"
+        />
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-[#fbfbf9] px-2 font-sans font-semibold text-[8px] tracking-[0.3em] uppercase opacity-50">
+          CLIENTS
+        </div>
+      </div>
+
       {/* Text-based Link Preview Case Studies */}
-      <CaseStudiesPreviewSection />
+      <div className="mb-32">
+        <CaseStudiesPreviewSection />
+      </div>
 
       {/* Testimonials */}
       <TestimonialSection />
