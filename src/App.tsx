@@ -7,6 +7,7 @@ import { FeatureSteps } from './components/ui/feature-section';
 import TestimonialSection from './components/ui/testimonials-section';
 import { Footer } from './components/ui/footer';
 import { CaseStudiesPreviewSection } from './components/ui/case-studies-preview';
+import { ContactSection } from './components/ui/contact-section';
 import { TrendingUp, Globe, BarChart3 } from 'lucide-react';
 
 const servicesFeatures = [
@@ -422,6 +423,9 @@ function App() {
 
       {/* Testimonials */}
       <TestimonialSection />
+
+      {/* Premium Contact Form directly attached to Footer */}
+      <ContactSection />
 
       {/* Footer Seamlessly Blending */}
       <Footer />
