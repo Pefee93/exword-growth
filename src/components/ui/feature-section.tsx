@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "../../lib/utils"
+import { FeatureShapeCanvas } from "./feature-shapes"
 
 interface Feature {
     step: string
@@ -123,17 +124,10 @@ export function FeatureSteps({
                                                             {feature.content}
                                                         </p>
                                                     </div>
-                                                    <div className="flex-1 w-full h-[250px] md:h-[400px] relative overflow-hidden bg-[#fbfbf9] rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] group">
-                                                        <img
-                                                            src={feature.image}
-                                                            alt={feature.step}
-                                                            className="w-full h-full object-cover transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05]"
-                                                        />
-                                                        {/* Architectural Corner Reticles */}
-                                                        <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-white/40" />
-                                                        <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-white/40" />
-                                                        <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-white/40" />
-                                                        <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-white/40" />
+                                                    <div className="flex-1 w-full h-[250px] md:h-[400px] relative group flex items-center justify-center">
+                                                        <div className="w-full h-full absolute inset-0 transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.05]">
+                                                            <FeatureShapeCanvas index={index} />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </motion.div>
