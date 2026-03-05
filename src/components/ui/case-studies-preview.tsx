@@ -27,50 +27,60 @@ const studies = [
 
 export function CaseStudiesPreviewSection() {
     return (
-        <section className="relative z-10 w-full max-w-[1280px] mx-auto px-6 md:px-12 py-32 border-t border-black/5 mt-10">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-16 md:gap-20">
+        <section className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-10 pb-32">
 
-                {/* Left Title Section - Vertically centered vs the list */}
-                <div className="flex-shrink-0 md:w-1/3 text-center md:text-left relative">
-                    <div className="hidden md:flex absolute -top-8 left-0 items-center gap-4 animate-fade-in anim-delay-500">
-                        <span className="font-sans text-[10px] font-semibold tracking-[0.2em] text-[#1B0624]/40 uppercase opacity-80">[ Selected Works ]</span>
-                    </div>
-                    <h2 className="font-['Instrument_Serif'] font-light text-[48px] md:text-[64px] lg:text-[80px] text-[#1B0624] leading-[0.9] tracking-tight whitespace-nowrap">
-                        Case<br className="hidden md:block" /> Studies
-                    </h2>
+            {/* Top Header Area */}
+            <div className="flex items-center gap-4 mb-10 md:mb-16">
+                <span className="font-sans text-[10px] font-semibold tracking-[0.2em] text-[#1B0624]/40 uppercase opacity-80">[ Selected Works ]</span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-black/10 to-transparent" />
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20 lg:mb-32">
+                <h2 className="font-['Instrument_Serif'] font-light text-[64px] md:text-[96px] lg:text-[120px] text-[#1B0624] leading-[0.8] tracking-[-0.03em]">
+                    Case<br />Studies.
+                </h2>
+                <div className="flex flex-col gap-6 md:max-w-sm border-l border-black/10 pl-6 md:pb-4">
+                    <p className="font-sans text-[14px] md:text-[16px] text-black/50 font-normal leading-[1.6]">
+                        We partner with ambitious SaaS companies to engineer their transition into the AI-search era, driving measurable pipeline.
+                    </p>
+                    <button className="text-left font-sans text-[12px] font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-50 transition-opacity">
+                        View all <ArrowUpRight className="w-4 h-4" />
+                    </button>
                 </div>
+            </div>
 
-                {/* Right Links Section - Soft elegant buttons */}
-                <div className="flex flex-col w-full md:w-2/3 gap-6 md:gap-8 pt-2">
-                    {studies.map((study, index) => (
-                        <div key={index} className="group w-full relative">
-                            {/* 
-                                The LinkPreview component acts as our button block.
-                                Soft white background, subtle border, large elegant shadow.
-                                On hover: it sinks down slightly (translate-y-2) and the shadow shrinks,
-                                creating a highly tactile, physical "press" feeling that remains sleek.
-                            */}
-                            <LinkPreview
-                                url={study.url}
-                                imageSrc={study.imageSrc}
-                                isStatic
-                                className="block w-full bg-white rounded-3xl p-6 md:p-8 lg:p-10 border border-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:translate-y-[4px] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] no-underline cursor-pointer"
-                            >
-                                <div className="flex flex-row items-center justify-between gap-4">
-                                    <span className="font-sans text-[28px] md:text-[36px] lg:text-[48px] text-[#1B0624] font-medium tracking-tight leading-none group-hover:translate-x-4 group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+            {/* Immersive Full-Width Editorial List */}
+            <div className="flex flex-col w-full border-b border-black/10">
+                {studies.map((study, index) => (
+                    <div key={index} className="w-full relative group">
+                        <LinkPreview
+                            url={study.url}
+                            imageSrc={study.imageSrc}
+                            isStatic
+                            className="block w-full py-10 md:py-16 border-t border-black/10 hover:bg-black/[0.015] transition-colors duration-500 no-underline cursor-pointer"
+                        >
+                            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-4 md:px-8">
+
+                                <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
+                                    <span className="font-sans font-semibold text-[12px] tracking-[0.3em] text-[#1B0624] opacity-30 mt-2 md:mt-0 w-8">
+                                        0{index + 1}
+                                    </span>
+                                    <span className="font-['Instrument_Serif'] text-[48px] md:text-[80px] lg:text-[100px] text-[#1B0624] font-light tracking-tight leading-none group-hover:translate-x-8 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
                                         {study.name}
                                     </span>
-
-                                    {/* Action icon */}
-                                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-black/10 flex items-center justify-center bg-[#fbfbf9] group-hover:bg-[#1B0624] group-hover:text-white transition-colors duration-300 shrink-0">
-                                        <ArrowUpRight strokeWidth={1.5} className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-45 transition-transform duration-300" />
-                                    </div>
                                 </div>
-                            </LinkPreview>
-                        </div>
-                    ))}
-                </div>
 
+                                {/* Magnetic-style Interactive Button */}
+                                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-black/10 flex items-center justify-center bg-transparent shrink-0 overflow-hidden relative group-hover:border-transparent transition-colors duration-500">
+                                    {/* Liquid Background Fill */}
+                                    <div className="absolute inset-0 bg-[#1B0624] rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center" />
+                                    <ArrowUpRight strokeWidth={1} className="w-6 h-6 md:w-10 md:h-10 text-black group-hover:text-white relative z-10 group-hover:rotate-45 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                                </div>
+
+                            </div>
+                        </LinkPreview>
+                    </div>
+                ))}
             </div>
         </section>
     );

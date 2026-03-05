@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "../../lib/utils"
-import { Canvas } from "@react-three/fiber"
-import { ShaderPlane } from "./background-paper-shaders"
 
 interface Feature {
     step: string
@@ -17,7 +15,6 @@ interface FeatureStepsProps {
     title?: string
     subtitle?: string
     autoPlayInterval?: number
-    imageHeight?: string
 }
 
 export function FeatureSteps({
@@ -26,7 +23,6 @@ export function FeatureSteps({
     title = "What we do for SaaS teams",
     subtitle = "We plug into your team as your organic growth partner—strategy, execution, and continuous optimization.",
     autoPlayInterval = 4000,
-    imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
     const [currentFeature, setCurrentFeature] = useState(0)
     const [progress, setProgress] = useState(0)
@@ -45,7 +41,7 @@ export function FeatureSteps({
     }, [progress, features.length, autoPlayInterval])
 
     return (
-        <div className={cn("p-8 md:p-12 w-full", className)}>
+        <div className={cn("p-8 md:p-12 w-full max-w-[1400px] mx-auto", className)}>
             {/* Inject Global SVG Clip Paths for our non-square images */}
             <svg className='fixed left-[-9999px] top-[-9999px] h-0 w-0'>
                 <defs>
@@ -64,105 +60,97 @@ export function FeatureSteps({
                 </defs>
             </svg>
 
-            <div className="max-w-6xl mx-auto w-full relative">
-                {/* 3D Paper Shader Background that covers just the header region securely */}
-                <div
-                    className="absolute top-[-100px] left-[-150px] right-[-150px] h-[400px] opacity-[0.9] select-none pointer-events-none z-0"
-                    style={{
-                        maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)',
-                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'
-                    }}
-                >
-                    <Canvas camera={{ position: [0, 0, 5], fov: 70 }} gl={{ alpha: true, antialias: false }}>
-                        <ShaderPlane position={[0, 0, 0]} color1="#ffffff" color2="#f6f6f2" scale={5} />
-                    </Canvas>
-                </div>
+            <div className="w-full relative">
+                {/* Architectural header */}
+                <div className="text-center mb-24 relative z-10">
+                    <div className="flex items-center justify-center gap-4 mb-6">
+                        <div className="h-[1px] w-8 md:w-16 bg-black/10" />
+                        <span className="font-sans text-[10px] font-semibold tracking-[0.2em] text-[#1B0624]/40 uppercase">[ Services overview ]</span>
+                        <div className="h-[1px] w-8 md:w-16 bg-black/10" />
+                    </div>
 
-                <div className="text-center mb-16 relative z-10">
-                    <h2 className="font-['Instrument_Serif'] text-4xl md:text-5xl lg:text-7xl font-normal tracking-tight text-[#1B0624] mb-4 relative drop-shadow-sm">
+                    <h2 className="font-['Instrument_Serif'] text-[44px] md:text-[64px] lg:text-[80px] font-light leading-[1] tracking-tight text-[#1B0624] mb-6 relative">
                         {title}
                     </h2>
                     {subtitle && (
-                        <p className="font-sans text-lg md:text-xl text-black/60 max-w-3xl mx-auto font-light relative drop-shadow-sm">
+                        <p className="font-sans text-[14px] md:text-[16px] text-black/50 max-w-2xl mx-auto font-normal leading-[1.6]">
                             {subtitle}
                         </p>
                     )}
                 </div>
 
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                    <div className="order-2 md:order-1 space-y-8">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={index}
-                                className="flex items-start gap-6 md:gap-8 cursor-pointer"
-                                onClick={() => {
-                                    setCurrentFeature(index)
-                                    setProgress(0)
-                                }}
-                                initial={{ opacity: 0.4 }}
-                                animate={{ opacity: index === currentFeature ? 1 : 0.4 }}
-                                transition={{ duration: 0.5 }}
-                            >
+                <div className="flex flex-col w-full items-start">
+
+                    {/* Full Width Interactive Editorial List */}
+                    <div className="w-full flex flex-col pt-4">
+                        {features.map((feature, index) => {
+                            const isActive = index === currentFeature;
+                            return (
                                 <motion.div
-                                    className={cn(
-                                        "w-10 h-10 shrink-0 rounded-full flex items-center justify-center border font-sans text-sm mt-1 transition-all duration-300",
-                                        index === currentFeature
-                                            ? "bg-[#1B0624] border-[#1B0624] text-white scale-110 shadow-lg"
-                                            : "bg-transparent border-black/20 text-[#1B0624]",
-                                    )}
+                                    key={index}
+                                    className="group relative flex flex-col cursor-pointer border-t border-black/10 py-8 lg:py-10 transition-colors hover:bg-black/[0.015]"
+                                    onClick={() => {
+                                        setCurrentFeature(index)
+                                        setProgress(0)
+                                    }}
+                                    initial={{ opacity: 0.8 }}
+                                    animate={{ opacity: isActive ? 1 : 0.4 }}
+                                    transition={{ duration: 0.5 }}
                                 >
-                                    {index <= currentFeature ? (
-                                        <span className="font-medium">✓</span>
-                                    ) : (
-                                        <span className="font-medium">{index + 1}</span>
+                                    <div className="flex items-start md:items-center justify-between w-full pr-4">
+                                        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                                            <span className="font-sans font-semibold text-[10px] tracking-[0.2em] text-[#1B0624] opacity-50 shrink-0 mt-2 md:mt-0">
+                                                [ {String(index + 1).padStart(2, '0')} ]
+                                            </span>
+                                            <h3 className="font-['Instrument_Serif'] text-[32px] md:text-[48px] font-light text-[#1B0624] tracking-tight group-hover:translate-x-3 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                                                {feature.title || feature.step}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {isActive && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                                className="overflow-hidden w-full flex flex-col md:flex-row items-center gap-8 md:gap-16 pt-8 pb-4 md:pl-[74px] md:pr-10"
+                                            >
+                                                <div className="flex-1 md:max-w-md w-full">
+                                                    <p className="font-sans text-[14px] md:text-[16px] leading-[1.7] text-black/60 font-light">
+                                                        {feature.content}
+                                                    </p>
+                                                </div>
+                                                <div className="flex-1 w-full h-[250px] md:h-[400px] relative overflow-hidden bg-[#fbfbf9] rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] group">
+                                                    <img
+                                                        src={feature.image}
+                                                        alt={feature.step}
+                                                        className="w-full h-full object-cover transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05]"
+                                                    />
+                                                    {/* Architectural Corner Reticles */}
+                                                    <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-white/40" />
+                                                    <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-white/40" />
+                                                    <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-white/40" />
+                                                    <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-white/40" />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    {/* Progress line indicator visible only when active */}
+                                    {isActive && (
+                                        <motion.div
+                                            className="absolute bottom-[-1px] left-0 h-[1px] bg-[#1B0624]"
+                                            initial={{ width: "0%" }}
+                                            animate={{ width: "100%" }}
+                                            transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
+                                        />
                                     )}
                                 </motion.div>
-
-                                <div className="flex-1">
-                                    <h3 className="font-sans text-xl md:text-2xl font-medium text-[#1B0624] tracking-tight mb-2">
-                                        {feature.title || feature.step}
-                                    </h3>
-                                    <p className="font-sans text-[15px] md:text-[16px] leading-[1.6] text-black/60 font-light">
-                                        {feature.content}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div
-                        className={cn(
-                            "order-1 md:order-2 relative w-full flex items-center justify-center",
-                            imageHeight
-                        )}
-                    >
-                        <AnimatePresence mode="wait">
-                            {features.map(
-                                (feature, index) =>
-                                    index === currentFeature && (
-                                        <motion.div
-                                            key={index}
-                                            className="absolute inset-0 flex items-center justify-center"
-                                            initial={{ y: 50, opacity: 0, filter: 'blur(10px)' }}
-                                            animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-                                            exit={{ y: -50, opacity: 0, filter: 'blur(10px)' }}
-                                            transition={{ duration: 0.6, ease: "easeInOut" }}
-                                        >
-                                            <div className="w-[90%] h-[90%]">
-                                                <img
-                                                    src={feature.image}
-                                                    alt={feature.step}
-                                                    className="w-full h-full object-cover transition-transform transform duration-1000 hover:scale-[1.03]"
-                                                    style={{
-                                                        clipPath: `url(#${['clip-squiggle', 'clip-another', 'clip-rect', 'clip-squiggle'][index % 4]})`,
-                                                        transformOrigin: 'center'
-                                                    }}
-                                                />
-                                            </div>
-                                        </motion.div>
-                                    ),
-                            )}
-                        </AnimatePresence>
+                            )
+                        })}
+                        <div className="border-t border-black/10 w-full" />
                     </div>
                 </div>
             </div>
