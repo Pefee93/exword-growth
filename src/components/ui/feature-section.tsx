@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "../../lib/utils"
 import { FeatureShapeCanvas } from "./feature-shapes"
+import { Link } from "react-router-dom"
 
 interface Feature {
     step: string
@@ -146,7 +147,15 @@ export function FeatureSteps({
                                 </motion.div>
                             )
                         })}
-                        <div className="border-t border-black/10 w-full" />
+                        <div className="border-t border-black/10 w-full mb-12" />
+
+                        {/* See All Services Button */}
+                        <div className="flex justify-center w-full relative z-10 px-8">
+                            <Link to="/services" className="group relative overflow-hidden bg-black text-white font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.1)] transition-shadow">
+                                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">See all services</span>
+                                <div className="absolute inset-0 bg-[#fbfbf9] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
