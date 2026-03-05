@@ -10,13 +10,6 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     const { theme } = useTheme();
 
     const containerRef = useRef<HTMLDivElement>(null);
-    const sceneRef = useRef<{
-        scene: THREE.Scene;
-        camera: THREE.PerspectiveCamera;
-        renderer: THREE.WebGLRenderer;
-        animationId: number;
-        count: number;
-    } | null>(null);
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -126,40 +119,30 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
         // Start animation
         animate();
 
-        // Store references
-        sceneRef.current = {
-            scene,
-            camera,
-            renderer,
-            animationId,
-            count,
-        };
-
         // Cleanup function
         return () => {
             window.removeEventListener('resize', handleResize);
+            cancelAnimationFrame(animationId);
 
-            if (sceneRef.current) {
-                cancelAnimationFrame(sceneRef.current.animationId);
-
-                // Clean up Three.js objects
-                sceneRef.current.scene.traverse((object) => {
-                    if (object instanceof THREE.Points) {
-                        object.geometry.dispose();
-                        if (Array.isArray(object.material)) {
-                            object.material.forEach((material) => material.dispose());
-                        } else {
-                            object.material.dispose();
-                        }
+            scene.traverse((object) => {
+                if (object instanceof THREE.Points) {
+                    object.geometry.dispose();
+                    if (Array.isArray(object.material)) {
+                        object.material.forEach((material) => material.dispose());
+                    } else {
+                        object.material.dispose();
                     }
-                });
+                }
+            });
 
-                sceneRef.current.renderer.dispose();
+            renderer.forceContextLoss();
+            renderer.dispose();
 
-                if (containerRef.current && sceneRef.current.renderer.domElement) {
-                    containerRef.current.removeChild(
-                        sceneRef.current.renderer.domElement,
-                    );
+            if (containerRef.current && renderer.domElement) {
+                try {
+                    containerRef.current.removeChild(renderer.domElement);
+                } catch (e) {
+                    // Node may have already been unmounted
                 }
             }
         };
