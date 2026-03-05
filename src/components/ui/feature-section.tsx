@@ -108,31 +108,33 @@ export function FeatureSteps({
                                         </div>
                                     </div>
 
-                                    <AnimatePresence>
+                                    <AnimatePresence initial={false}>
                                         {isActive && (
                                             <motion.div
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                                className="overflow-hidden w-full flex flex-col md:flex-row items-center gap-8 md:gap-16 pt-8 pb-4 md:pl-[74px] md:pr-10"
+                                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                                className="overflow-hidden w-full"
                                             >
-                                                <div className="flex-1 md:max-w-md w-full">
-                                                    <p className="font-sans text-[14px] md:text-[16px] leading-[1.7] text-black/60 font-light">
-                                                        {feature.content}
-                                                    </p>
-                                                </div>
-                                                <div className="flex-1 w-full h-[250px] md:h-[400px] relative overflow-hidden bg-[#fbfbf9] rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] group">
-                                                    <img
-                                                        src={feature.image}
-                                                        alt={feature.step}
-                                                        className="w-full h-full object-cover transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05]"
-                                                    />
-                                                    {/* Architectural Corner Reticles */}
-                                                    <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-white/40" />
-                                                    <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-white/40" />
-                                                    <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-white/40" />
-                                                    <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-white/40" />
+                                                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 pt-8 pb-4 md:pl-[74px] md:pr-10">
+                                                    <div className="flex-1 md:max-w-md w-full">
+                                                        <p className="font-sans text-[14px] md:text-[16px] leading-[1.7] text-black/60 font-light">
+                                                            {feature.content}
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex-1 w-full h-[250px] md:h-[400px] relative overflow-hidden bg-[#fbfbf9] rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] group">
+                                                        <img
+                                                            src={feature.image}
+                                                            alt={feature.step}
+                                                            className="w-full h-full object-cover transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05]"
+                                                        />
+                                                        {/* Architectural Corner Reticles */}
+                                                        <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-white/40" />
+                                                        <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-white/40" />
+                                                        <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-white/40" />
+                                                        <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-white/40" />
+                                                    </div>
                                                 </div>
                                             </motion.div>
                                         )}

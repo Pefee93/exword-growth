@@ -1,27 +1,39 @@
-"use client";
-import { LinkPreview } from "./link-preview";
 import { ArrowUpRight } from "lucide-react";
+
+import { RevealImageList } from "./reveal-images";
 
 const studies = [
     {
-        name: "Postman",
+        text: "Postman",
         url: "https://postman.com",
-        imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+        images: [
+            { src: "/assets/case_1.png", alt: "Postman Case Study" },
+            { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", alt: "Postman Background" }
+        ] as [{ src: string, alt: string }, { src: string, alt: string }]
     },
     {
-        name: "Doordash",
+        text: "Doordash",
         url: "https://doordash.com",
-        imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+        images: [
+            { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop", alt: "Doordash Case Study" },
+            { src: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3", alt: "Doordash Secondary" }
+        ] as [{ src: string, alt: string }, { src: string, alt: string }]
     },
     {
-        name: "Binance",
+        text: "Binance",
         url: "https://binance.com",
-        imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+        images: [
+            { src: "/assets/case_2.png", alt: "Binance Case Study" },
+            { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop", alt: "Binance Secondary" }
+        ] as [{ src: string, alt: string }, { src: string, alt: string }]
     },
     {
-        name: "Booking.com",
+        text: "Booking.com",
         url: "https://booking.com",
-        imageSrc: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop",
+        images: [
+            { src: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop", alt: "Booking Case Study" },
+            { src: "https://images.unsplash.com/photo-1567262439850-1d4dc1fefdd0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3", alt: "Booking Secondary" }
+        ] as [{ src: string, alt: string }, { src: string, alt: string }]
     }
 ];
 
@@ -50,38 +62,7 @@ export function CaseStudiesPreviewSection() {
             </div>
 
             {/* Immersive Full-Width Editorial List */}
-            <div className="flex flex-col w-full border-b border-black/10">
-                {studies.map((study, index) => (
-                    <div key={index} className="w-full relative group">
-                        <LinkPreview
-                            url={study.url}
-                            imageSrc={study.imageSrc}
-                            isStatic
-                            className="block w-full py-10 md:py-16 border-t border-black/10 hover:bg-black/[0.015] transition-colors duration-500 no-underline cursor-pointer"
-                        >
-                            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-4 md:px-8">
-
-                                <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
-                                    <span className="font-sans font-semibold text-[12px] tracking-[0.3em] text-[#1B0624] opacity-30 mt-2 md:mt-0 w-8">
-                                        0{index + 1}
-                                    </span>
-                                    <span className="font-['Instrument_Serif'] text-[48px] md:text-[80px] lg:text-[100px] text-[#1B0624] font-light tracking-tight leading-none group-hover:translate-x-8 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
-                                        {study.name}
-                                    </span>
-                                </div>
-
-                                {/* Magnetic-style Interactive Button */}
-                                <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-black/10 flex items-center justify-center bg-transparent shrink-0 overflow-hidden relative group-hover:border-transparent transition-colors duration-500">
-                                    {/* Liquid Background Fill */}
-                                    <div className="absolute inset-0 bg-[#1B0624] rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center" />
-                                    <ArrowUpRight strokeWidth={1} className="w-6 h-6 md:w-10 md:h-10 text-black group-hover:text-white relative z-10 group-hover:rotate-45 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                                </div>
-
-                            </div>
-                        </LinkPreview>
-                    </div>
-                ))}
-            </div>
+            <RevealImageList items={studies} />
         </section>
     );
 }
