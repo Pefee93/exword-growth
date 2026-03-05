@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import AnoAI from './components/ui/animated-shader-background';
 import { Spotlight } from './components/ui/spotlight';
 import { Marquee } from './components/ui/marquee';
@@ -222,59 +223,108 @@ function App() {
             Designed to convert.<br />Built to scale.
           </h2>
 
-          {/* Stats Row (No vertical boxes/borders) */}
-          <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8 border-y border-black/10 py-12 md:py-16">
-            <div className="flex flex-col gap-1">
-              <span className="font-sans font-medium text-[64px] md:text-[80px] text-black leading-none tracking-tight">2.4<span className="text-[40px] md:text-[50px] ml-1">x</span></span>
-              <span className="font-sans text-[14px] text-black/60 tracking-wide font-normal">Increase in organic traffic</span>
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="font-sans font-medium text-[64px] md:text-[80px] text-black leading-none tracking-tight">40<span className="text-[40px] md:text-[50px] ml-1">%</span></span>
-              <span className="font-sans text-[14px] text-black/60 tracking-wide font-normal">Higher conversion rate</span>
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="font-sans font-medium text-[64px] md:text-[80px] text-black leading-none tracking-tight">#1</span>
-              <span className="font-sans text-[14px] text-black/60 tracking-wide font-normal">Rankings in AI overviews</span>
-            </div>
+          {/* Stats Row (Animated + Minimalist) */}
+          <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-8 border-y border-black/10 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
+              whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+              className="flex flex-col gap-2 border-l border-black/20 pl-6 md:pl-8">
+              <span className="font-['Instrument_Serif'] font-light text-[80px] md:text-[110px] text-black leading-[0.8] tracking-[-0.04em]">2.4<span className="font-sans font-light text-[40px] md:text-[50px] ml-1 tracking-normal">x</span></span>
+              <span className="font-sans text-[12px] md:text-[14px] text-black/50 tracking-widest font-semibold uppercase mt-2">Increase in organic traffic</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
+              whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
+              className="flex flex-col gap-2 border-l border-black/20 pl-6 md:pl-8">
+              <span className="font-['Instrument_Serif'] font-light text-[80px] md:text-[110px] text-black leading-[0.8] tracking-[-0.04em]">40<span className="font-sans font-light text-[40px] md:text-[50px] ml-1 tracking-normal">%</span></span>
+              <span className="font-sans text-[12px] md:text-[14px] text-black/50 tracking-widest font-semibold uppercase mt-2">Higher conversion rate</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
+              whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
+              className="flex flex-col gap-2 border-l border-black/20 pl-6 md:pl-8">
+              <span className="font-['Instrument_Serif'] font-light text-[80px] md:text-[110px] text-black leading-[0.8] tracking-[-0.04em]">#1</span>
+              <span className="font-sans text-[12px] md:text-[14px] text-black/50 tracking-widest font-semibold uppercase mt-2">Rankings in AI overviews</span>
+            </motion.div>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 pt-4 border-t-0 md:border-b-0 border-black/10 relative">
-            {/* Card 1 */}
-            <div className="relative flex flex-col gap-4 p-8 md:pr-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl">
-              <Spotlight size={180} />
-              <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
-                <TrendingUp size={20} strokeWidth={1.5} />
-              </div>
-              <h3 className="font-sans font-medium text-[18px] text-black relative z-10">AI-Optimized Content</h3>
-              <p className="font-sans text-[14px] text-black/60 font-normal leading-[1.7] relative z-10">
-                We structure your SaaS content specifically for Large Language Models and AI search generative experiences, not just legacy blue links.
-              </p>
-            </div>
+          {/* Asymmetrical Bento Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8 pt-6 relative border-none">
 
-            {/* Card 2 */}
-            <div className="relative flex flex-col gap-4 p-8 md:px-10 md:border-r border-black/10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl md:crosshair-tl">
-              <Spotlight size={180} />
-              <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
+            {/* Card 1 - Wide Block Spanning 2 Columns */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+              className="md:col-span-2 relative flex flex-col justify-end gap-6 p-10 md:p-14 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
+              <Spotlight size={300} />
+
+              <div className="absolute top-10 right-10 w-16 h-16 rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-500 rotate-0 group-hover:rotate-[360deg]">
+                <TrendingUp size={24} strokeWidth={1.5} />
+              </div>
+
+              <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity">
+                <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-01</span>
+              </div>
+
+              <div className="relative z-10 mt-auto">
+                <h3 className="font-['Instrument_Serif'] font-light text-[40px] md:text-[56px] text-black leading-[0.9] tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">AI-Optimized Content</h3>
+                <p className="font-sans text-[15px] text-black/60 font-normal leading-[1.7] max-w-[380px]">
+                  We structure your SaaS content specifically for Large Language Models and AI search generative experiences, not just legacy blue links.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 2 - Vertical Single Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
+              className="md:col-span-1 relative flex flex-col justify-between p-8 md:p-10 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
+              <Spotlight size={200} />
+
+              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black mb-2 relative z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-colors duration-500">
                 <Globe size={20} strokeWidth={1.5} />
               </div>
-              <h3 className="font-sans font-medium text-[18px] text-black relative z-10">GEO Engineering</h3>
-              <p className="font-sans text-[14px] text-black/60 font-normal leading-[1.7] relative z-10">
-                Generative Engine Optimization tailored for ChatGPT, Perplexity, and Google's AI Overviews to capture modern bottom-funnel intents.
-              </p>
-            </div>
 
-            {/* Card 3 */}
-            <div className="relative flex flex-col gap-4 p-8 md:pl-10 hover:bg-black/[0.015] transition-colors duration-500 rounded-3xl md:rounded-none group crosshair-tl crosshair-tr">
-              <Spotlight size={180} />
-              <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-black mb-2 relative z-10">
+              <div className="relative z-10 mt-16">
+                <h3 className="font-['Instrument_Serif'] font-light text-[32px] md:text-[40px] text-black leading-[1] mb-3 group-hover:pl-2 transition-all duration-500 border-l border-transparent group-hover:border-black/20">GEO Eng.</h3>
+                <p className="font-sans text-[14px] text-black/50 font-normal leading-[1.6]">
+                  Generative Engine Optimization tailored for ChatGPT, Perplexity, and AI Overviews to capture modern bottom-funnel intents.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3 - Vertical Single Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
+              className="md:col-span-1 relative flex flex-col justify-between p-8 md:p-10 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
+              <Spotlight size={200} />
+
+              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black mb-2 relative z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-colors duration-500">
                 <BarChart3 size={20} strokeWidth={1.5} />
               </div>
-              <h3 className="font-sans font-medium text-[18px] text-black relative z-10">Technical Architecture</h3>
-              <p className="font-sans text-[14px] text-black/60 font-normal leading-[1.7] relative z-10">
-                Semantic markup and deep technical SEO architecture that provides clear, unambiguous data signals to search crawlers.
-              </p>
-            </div>
+
+              <div className="relative z-10 mt-16">
+                <h3 className="font-['Instrument_Serif'] font-light text-[32px] md:text-[40px] text-black leading-[1] mb-3 group-hover:pl-2 transition-all duration-500 border-l border-transparent group-hover:border-black/20">Architecture</h3>
+                <p className="font-sans text-[14px] text-black/50 font-normal leading-[1.6]">
+                  Semantic markup and deep technical SEO architecture that provides clear, unambiguous data signals to search crawlers.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
