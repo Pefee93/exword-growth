@@ -32,10 +32,10 @@ export function ContactSection() {
                                     <div className="h-[1px] w-16 bg-gradient-to-r from-white/20 to-transparent" />
                                 </div>
                                 <h2 className="font-['Instrument_Serif'] font-light text-[64px] md:text-[90px] lg:text-[120px] leading-[0.9] tracking-[-0.03em] mb-10">
-                                    Start<br />the growth<br />engine.
+                                    Let's get<br />you growing.
                                 </h2>
                                 <p className="font-sans text-[15px] md:text-[18px] text-white/60 font-light leading-[1.6] max-w-[420px]">
-                                    Ready to scale pipeline through AEO and technical architectural SEO? Leave your details and our growth team will reach out to schedule an exploration session.
+                                    Ready to build your brand's presence in the places where your buyers actually make decisions? Leave your details below and our team will reach out to set up a free growth session.
                                 </p>
                             </div>
                         </div>

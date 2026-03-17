@@ -4,35 +4,30 @@ import { RevealImageList } from "./reveal-images";
 
 const studies = [
     {
-        text: "Postman",
-        url: "https://postman.com",
+        text: "B2B SaaS Platform",
+        subtext: "2,500% increase in organic brand visibility across 12 communities",
+        url: "#",
         images: [
-            { src: "/assets/case_1.png", alt: "Postman Case Study" },
-            { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", alt: "Postman Background" }
+            { src: "/assets/case_1.png", alt: "B2B SaaS Platform Case Study" },
+            { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", alt: "B2B SaaS Background" }
         ] as [{ src: string, alt: string }, { src: string, alt: string }]
     },
     {
-        text: "Doordash",
-        url: "https://doordash.com",
+        text: "Developer Tools Company",
+        subtext: "From zero Reddit presence to 1.2M+ organic impressions in 6 months",
+        url: "#",
         images: [
-            { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop", alt: "Doordash Case Study" },
-            { src: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3", alt: "Doordash Secondary" }
+            { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop", alt: "Developer Tools Case Study" },
+            { src: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3", alt: "Developer Tools Secondary" }
         ] as [{ src: string, alt: string }, { src: string, alt: string }]
     },
     {
-        text: "Binance",
-        url: "https://binance.com",
+        text: "Creative Marketplace",
+        subtext: "300+ qualified B2B leads attributed to community engagement",
+        url: "#",
         images: [
-            { src: "/assets/case_2.png", alt: "Binance Case Study" },
-            { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop", alt: "Binance Secondary" }
-        ] as [{ src: string, alt: string }, { src: string, alt: string }]
-    },
-    {
-        text: "Booking.com",
-        url: "https://booking.com",
-        images: [
-            { src: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop", alt: "Booking Case Study" },
-            { src: "https://images.unsplash.com/photo-1567262439850-1d4dc1fefdd0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3", alt: "Booking Secondary" }
+            { src: "/assets/case_2.png", alt: "Creative Marketplace Case Study" },
+            { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop", alt: "Creative Marketplace Secondary" }
         ] as [{ src: string, alt: string }, { src: string, alt: string }]
     }
 ];
@@ -53,7 +48,7 @@ export function CaseStudiesPreviewSection() {
                 </h2>
                 <div className="flex flex-col gap-6 md:max-w-sm border-l border-black/10 pl-6 md:pb-4">
                     <p className="font-sans text-[14px] md:text-[16px] text-black/50 font-normal leading-[1.6]">
-                        We partner with ambitious SaaS companies to engineer their transition into the AI-search era, driving measurable pipeline.
+                        Real results from the companies we work with.
                     </p>
                     <button className="text-left font-sans text-[12px] font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-50 transition-opacity">
                         View all <ArrowUpRight className="w-4 h-4" />

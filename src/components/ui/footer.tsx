@@ -28,7 +28,7 @@ export function Footer() {
                             </span>
                         </div>
                         <p className="font-sans text-[14px] text-white/60 leading-[1.6] max-w-[280px]">
-                            Engineered organic growth for B2B SaaS in the era of answer engines and LLMs.
+                            Organic growth for B2B SaaS in the era of AI search and online communities.
                         </p>
                     </div>
 
@@ -38,7 +38,7 @@ export function Footer() {
                         <a href="#" className="font-sans text-[14px] text-white/60 hover:text-white transition-colors duration-200 no-underline">Services</a>
                         <a href="#" className="font-sans text-[14px] text-white/60 hover:text-white transition-colors duration-200 no-underline">Case Studies</a>
                         <a href="#" className="font-sans text-[14px] text-white/60 hover:text-white transition-colors duration-200 no-underline">Company</a>
-                        <a href="#" className="font-sans text-[14px] text-white/60 hover:text-white transition-colors duration-200 no-underline">Talk to us</a>
+                        <a href="#" className="font-sans text-[14px] text-white/60 hover:text-white transition-colors duration-200 no-underline">Talk to Us</a>
                     </div>
 
                     {/* Socials / Contact */}
@@ -66,7 +66,7 @@ export function Footer() {
                 {/* Copyright Row */}
                 <div className="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center mt-20 md:mt-32 pt-8 border-t border-white/10 gap-4">
                     <span className="font-sans text-[12px] text-white/40 tracking-wider uppercase">
-                        © {new Date().getFullYear()} ExWord Growth. All rights reserved.
+                        © 2026 EXWORD GROWTH. ALL RIGHTS RESERVED.
                     </span>
                     <div className="flex gap-6">
                         <a href="#" className="font-sans text-[12px] text-white/40 hover:text-white/80 transition-colors uppercase tracking-wider">Privacy Policy</a>

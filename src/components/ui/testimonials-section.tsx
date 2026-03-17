@@ -14,64 +14,28 @@ interface Testimonial {
 // --- Data ---
 const testimonials: Testimonial[] = [
     {
-        text: "This ERP revolutionized our operations, streamlining finance and inventory. The cloud-based platform keeps us productive, even remotely.",
+        text: "Working with ExWord has been fantastic. The team is highly knowledgeable about internet culture, online communities, and how to build real momentum for new products. They are professional, genuinely care about what they do, and value strong relationships. Partnering with them was a no-brainer for us.",
         image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Briana Patton",
-        role: "Operations Manager",
+        name: "Clever Plays",
+        role: "Client",
     },
     {
-        text: "Implementing this ERP was smooth and quick. The customizable, user-friendly interface made team training effortless.",
+        text: "I am incredibly impressed with the personal touch that ExWord has brought to our brand. They take the time to really understand your vision and goals. What sets them apart is their deep understanding of the channels that real buyers actually use to make decisions. I highly recommend them to anyone looking to grow their organic presence.",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Bilal Ahmed",
-        role: "IT Manager",
+        name: "Filmic Studios",
+        role: "Client",
     },
     {
-        text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
+        text: "ExWord took time to understand our product and our needs to help us grow our online presence. As a growing company, it was great getting support on this. They provided regular reports of their work and have been following us closely since we started working together. We will be happy working with them again in the future.",
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Saman Malik",
-        role: "Customer Support Lead",
-    },
-    {
-        text: "This ERP's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Omar Raza",
-        role: "CEO",
-    },
-    {
-        text: "Its robust features and quick support have transformed our workflow, making us significantly more efficient.",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Zainab Hussain",
-        role: "Project Manager",
-    },
-    {
-        text: "The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.",
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Aliza Khan",
-        role: "Business Analyst",
-    },
-    {
-        text: "Our business functions improved with a user-friendly design and positive customer feedback.",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Farhan Siddiqui",
-        role: "Marketing Director",
-    },
-    {
-        text: "They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Sana Sheikh",
-        role: "Sales Manager",
-    },
-    {
-        text: "Using this ERP, our online presence and conversions significantly improved, boosting business performance.",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-        name: "Hassan Ali",
-        role: "E-commerce Manager",
-    },
+        name: "Hibernian Workshop",
+        role: "Client",
+    }
 ];
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+const firstColumn = [testimonials[0]];
+const secondColumn = [testimonials[1]];
+const thirdColumn = [testimonials[2]];
 
 // --- Sub-Components ---
 const TestimonialsColumn = (props: {
@@ -183,15 +147,15 @@ export default function TestimonialSection() {
                         <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16">
                             <div className="flex justify-center">
                                 <div className="border border-white/30 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-white bg-black/20 backdrop-blur-md transition-colors">
-                                    Testimonials
+                                    TESTIMONIALS
                                 </div>
                             </div>
 
                             <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-white transition-colors">
-                                What our users say
+                                What our clients say
                             </h2>
                             <p className="text-center mt-5 text-white/80 text-lg leading-relaxed max-w-sm transition-colors">
-                                Discover how thousands of teams streamline their operations with our platform.
+                                Real results from real partnerships.
                             </p>
                         </div>
 
