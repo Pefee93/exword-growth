@@ -1,5 +1,5 @@
 "use client";
-import { Linkedin, Twitter, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function Footer() {
     return (
@@ -44,21 +44,12 @@ export function Footer() {
                     {/* Socials / Contact */}
                     <div className="flex flex-col w-full md:w-1/3 items-center md:items-end gap-6">
                         <a
-                            href="mailto:hello@exwordgrowth.com"
+                            href="mailto:ognjen@exword.co"
                             className="group flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-full transition-all duration-300 pointer"
                         >
                             <Mail className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
-                            <span className="font-sans text-[14px] text-white font-medium tracking-wide">hello@exwordgrowth.com</span>
+                            <span className="font-sans text-[14px] text-white font-medium tracking-wide">ognjen@exword.co</span>
                         </a>
-
-                        <div className="flex items-center gap-4 mt-2">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                                <Linkedin className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                                <Twitter className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
-                            </a>
-                        </div>
                     </div>
 
                 </div>

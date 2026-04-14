@@ -15,19 +15,19 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         text: "Working with ExWord has been fantastic. The team is highly knowledgeable about internet culture, online communities, and how to build real momentum for new products. They are professional, genuinely care about what they do, and value strong relationships. Partnering with them was a no-brainer for us.",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
+        image: "/assets/clever.png",
         name: "Clever Plays",
         role: "Client",
     },
     {
         text: "I am incredibly impressed with the personal touch that ExWord has brought to our brand. They take the time to really understand your vision and goals. What sets them apart is their deep understanding of the channels that real buyers actually use to make decisions. I highly recommend them to anyone looking to grow their organic presence.",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
+        image: "/assets/filmic.png",
         name: "Filmic Studios",
         role: "Client",
     },
     {
         text: "ExWord took time to understand our product and our needs to help us grow our online presence. As a growing company, it was great getting support on this. They provided regular reports of their work and have been following us closely since we started working together. We will be happy working with them again in the future.",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
+        image: "/assets/hibernian.png",
         name: "Hibernian Workshop",
         role: "Client",
     }
@@ -85,11 +85,10 @@ const TestimonialsColumn = (props: {
                                         </p>
                                         <footer className="flex items-center gap-3 mt-6">
                                             <img
-                                                width={40}
-                                                height={40}
                                                 src={image}
-                                                alt={`Avatar of ${name}`}
-                                                className="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-100 group-hover:ring-primary/30 transition-all duration-300 ease-in-out"
+                                                alt={`Logo of ${name}`}
+                                                className="h-10 w-auto max-w-[90px] object-contain transition-all duration-300 ease-in-out mr-1 opacity-90"
+                                                style={{ filter: "brightness(0)" }}
                                             />
                                             <div className="flex flex-col">
                                                 <cite className="font-semibold not-italic tracking-tight leading-5 text-neutral-900 transition-colors duration-300">
@@ -118,7 +117,7 @@ export default function TestimonialSection() {
                 aria-labelledby="testimonials-heading"
                 className="relative overflow-hidden rounded-t-[3rem] md:rounded-t-[4rem]"
                 style={{
-                    backgroundImage: "url('/assets/neom-gVDUuJaG_wM-unsplash.jpg')",
+                    backgroundImage: "url('/assets/daysky.jpg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center top',
                 }}

@@ -9,6 +9,7 @@ import { CaseStudiesPreviewSection } from '../components/ui/case-studies-preview
 import { ContactSection } from '../components/ui/contact-section';
 import { TrendingUp, Search, Radar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RedditStatsOverlay } from '../components/ui/reddit-stats-overlay';
 
 const servicesFeatures = [
   {
@@ -34,15 +35,40 @@ const servicesFeatures = [
     title: 'Community Intelligence & Lead Monitoring',
     content: 'Our proprietary tools monitor Reddit and key forums daily for threads where potential buyers are actively looking for your type of solution. You get weekly reports with real buying signals, giving your team a direct line to the conversations that matter most.',
     image: '/assets/service_4.png'
+  },
+  {
+    step: 'Service 5',
+    title: 'Reputation Management & Monitoring',
+    content: 'A single negative thread can shape how thousands of buyers see your brand for years. We track mentions and sentiment across Reddit and key communities, then help you respond thoughtfully and proactively so search results and conversations reflect the real quality of your product and team.',
+    image: '/assets/service_5.png'
+  },
+  {
+    step: 'Service 6',
+    title: 'YouTube Comment Marketing',
+    content: 'Your audience is watching YouTube reviews and deep-dives before they ever hit your website. We place thoughtful, non-spammy comments on the videos your buyers already trust, adding value to the discussion while putting your brand in front of highly engaged viewers at exactly the right moment.',
+    image: '/assets/service_6.png'
   }
 ];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [expandedCard, setExpandedCard] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isRedditStatsOpen, setIsRedditStatsOpen] = useState(false);
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
   const backgroundOpacity = useTransform(scrollY, [0, 800], [1, 0]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +80,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#fbfbf9] w-full min-h-screen overflow-x-hidden relative">
+    <div className="bg-[#fbfbf9] w-full min-h-screen relative">
 
       {/* Global Subtle Noise Overlay for organic texture */}
       <div className="pointer-events-none fixed inset-0 z-[100] h-full w-full opacity-[0.015] mix-blend-multiply bg-noise" />
@@ -103,13 +129,47 @@ export default function Home() {
           </div>
 
           {/* Mobile Menu Icon */}
-          <button className={`hidden max-[768px]:flex items-center justify-center bg-transparent border-none transition-colors duration-300 ${isPastHero ? 'text-[#1B0624]' : 'text-white'}`}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <button 
+            onClick={() => setMobileMenuOpen(true)}
+            className={`hidden max-[768px]:flex items-center justify-center bg-transparent border-none transition-colors duration-300 ml-4 p-2 cursor-pointer ${isPastHero ? 'text-[#1B0624]' : 'text-white'}`}
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#1B0624] text-white flex flex-col pt-6 px-6">
+          <div className="flex items-center justify-between w-full mb-16">
+            <div className="flex items-center gap-3">
+              <img src="/assets/Logo.svg" alt="ExWord Logo" className="h-[24px] w-auto brightness-0 invert" />
+              <span className="font-sans text-[20px] font-light tracking-wide">ExWord Growth</span>
+            </div>
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 -mr-2 bg-transparent border-none text-white cursor-pointer"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+          
+          <nav className="flex flex-col gap-10 items-start pl-2">
+            <Link onClick={() => setMobileMenuOpen(false)} to="/" className="font-['Instrument_Serif'] text-[40px] text-white no-underline font-light tracking-tight">Home</Link>
+            <Link onClick={() => setMobileMenuOpen(false)} to="/services" className="font-['Instrument_Serif'] text-[40px] text-white/70 hover:text-white transition-colors no-underline font-light tracking-tight">Services</Link>
+            <Link onClick={() => setMobileMenuOpen(false)} to="/about" className="font-['Instrument_Serif'] text-[40px] text-white/70 hover:text-white transition-colors no-underline font-light tracking-tight">Company</Link>
+            <div className="pt-8 w-full">
+               <button onClick={() => setMobileMenuOpen(false)} className="w-full bg-white text-[#1B0624] py-4 rounded-full font-sans text-[16px] font-semibold tracking-wide">
+                 Talk to Us
+               </button>
+            </div>
+          </nav>
+        </div>
+      )}
 
       {/* Extra-tall absolute background that bleeds seamlessly into the next section */}
       <motion.div
@@ -117,7 +177,7 @@ export default function Home() {
         style={{
           backgroundImage: "url('/assets/neom-gVDUuJaG_wM-unsplash.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center 65%',
+          backgroundPosition: 'center 75%',
           backgroundRepeat: 'no-repeat',
           y: backgroundY,
           opacity: backgroundOpacity
@@ -131,108 +191,123 @@ export default function Home() {
         />
         {/* Bottom Fade Gradient blending the image effortlessly into the off-white paper background */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-[30vh]"
-          style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(251,251,249,0.4) 70%, #fbfbf9 100%)' }}
+          className="absolute bottom-0 left-0 right-0 h-[25vh]"
+          style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(251,251,249,0.8) 30%, #fbfbf9 60%, #fbfbf9 100%)' }}
         />
       </motion.div>
 
       {/* Content Section Overlay */}
-      <section className="relative z-10 flex flex-col min-h-screen">
+      <section className="relative z-10 flex flex-col w-full">
 
-        {/* Main Hero Content */}
-        <main className="flex-1 flex flex-col items-center justify-start text-center px-6 pt-[16vh] max-[768px]:pt-[12vh] max-[768px]:justify-start relative z-20">
+        <main className="w-full flex flex-col items-center relative z-20">
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
-            }}
-            className="flex flex-col items-center"
-          >
-            <div className="overflow-hidden mb-0 md:mb-2">
-              <motion.h1
-                variants={{
-                  hidden: { y: "100%", rotate: 2 },
-                  visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-                }}
-                className="font-['Instrument_Serif'] font-light leading-[1] text-white drop-shadow-xl"
-                style={{
-                  fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                  letterSpacing: '-0.04em',
-                  maxWidth: '1200px'
-                }}
-              >
-                Your next customers
-              </motion.h1>
-            </div>
-
-            <div className="overflow-hidden mb-0 md:mb-2">
-              <motion.h1
-                variants={{
-                  hidden: { y: "100%", rotate: -2 },
-                  visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-                }}
-                className="font-['Instrument_Serif'] font-light leading-[1] text-white drop-shadow-xl"
-                style={{
-                  fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                  letterSpacing: '-0.04em',
-                  maxWidth: '1200px'
-                }}
-              >
-                are already talking.
-              </motion.h1>
-            </div>
-            
-            <div className="overflow-hidden mb-6 md:mb-8">
-              <motion.h1
-                variants={{
-                  hidden: { y: "100%", rotate: 1 },
-                  visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-                }}
-                className="font-['Instrument_Serif'] font-light leading-[1] text-white drop-shadow-xl"
-                style={{
-                  fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                  letterSpacing: '-0.04em',
-                  maxWidth: '1200px'
-                }}
-              >
-                We make sure they find you.
-              </motion.h1>
-            </div>
-
+          {/* Block 1: 100vh Title Section */}
+          <div className="w-full min-h-[100svh] flex flex-col items-center justify-center px-4 md:px-6 pt-20 pb-10">
             <motion.div
+              initial="hidden"
+              animate="visible"
               variants={{
-                hidden: { opacity: 0, scale: 0.95, y: 20 },
-                visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
               }}
-              className="relative rounded-2xl md:rounded-3xl p-6 md:p-8 mb-8 max-w-[680px] w-full"
+              className="flex flex-col items-center w-full px-2 md:px-0 text-center"
             >
-              {/* Glassmorphism background with grain */}
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden">
-                 {/* Internal subtle gradient glow */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+              <div className="overflow-hidden mb-1 md:mb-2 w-full">
+                <motion.h1
+                  variants={{
+                    hidden: { y: "100%", rotate: 2 },
+                    visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  className="font-['Instrument_Serif'] font-light leading-[1.1] text-white drop-shadow-xl mx-auto"
+                  style={{
+                    fontSize: 'clamp(3rem, 9vw, 7rem)',
+                    letterSpacing: '-0.04em',
+                  }}
+                >
+                  Your next customers
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden mb-1 md:mb-2 w-full">
+                <motion.h1
+                  variants={{
+                    hidden: { y: "100%", rotate: -2 },
+                    visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  className="font-['Instrument_Serif'] font-light leading-[1.1] text-white drop-shadow-xl mx-auto"
+                  style={{
+                    fontSize: 'clamp(3rem, 9vw, 7rem)',
+                    letterSpacing: '-0.04em',
+                  }}
+                >
+                  are already talking.
+                </motion.h1>
               </div>
               
-              <p className="relative z-10 font-sans text-[13px] md:text-[15px] leading-[1.7] text-white font-light tracking-wide text-center">
-                The way people discover and choose software has completely changed. Your buyers are researching on Reddit, asking AI tools for recommendations, and trusting community discussions over landing pages long before they ever visit your website. We build your organic presence in the places where those decisions actually happen, so when someone's looking for a solution like yours, your product is already part of the conversation.
+              <div className="overflow-hidden mb-6 md:mb-8 w-full">
+                <motion.h1
+                  variants={{
+                    hidden: { y: "100%", rotate: 1 },
+                    visible: { y: "0%", rotate: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  className="font-['Instrument_Serif'] font-light leading-[1.1] text-white drop-shadow-xl mx-auto"
+                  style={{
+                    fontSize: 'clamp(3rem, 9vw, 7rem)',
+                    letterSpacing: '-0.04em',
+                  }}
+                >
+                  We make sure they find you.
+                </motion.h1>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Block 2: Subtext and Button completely below the fold */}
+          <div className="w-full flex flex-col items-center px-4 md:px-6 pt-[30vh] pb-[15vh]">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-30%" }}
+              variants={{
+               hidden: { opacity: 0, scale: 0.95, y: 30 },
+                visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              className="relative p-8 md:p-10 mb-10 max-w-[800px] w-full text-center"
+            >
+              <p className="relative z-10 font-sans text-[17px] md:text-[22px] leading-[1.7] text-[#1B0624] font-medium tracking-wide">
+                Your buyers trust Reddit more than ads, review sites, or search results. We make sure your brand shows up in the conversations that drive their decisions - organically, authentically, and at scale.
               </p>
             </motion.div>
 
-            <motion.button
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-30%" }}
               variants={{
-                hidden: { opacity: 0, scale: 0.9 },
-                visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.8, ease: "easeOut" } }
+                hidden: { opacity: 0, scale: 0.9, y: 20 },
+                visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, delay: 0.4, ease: "easeOut" } }
               }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-white text-[#000] font-sans font-medium text-[15px] px-[28px] py-[12px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-none"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
             >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Book a growth session</span>
-              <div className="absolute inset-0 bg-[#000] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
-            </motion.button>
-          </motion.div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative overflow-hidden bg-white text-[#000] font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-none min-w-[200px]"
+              >
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Book a growth session</span>
+                <div className="absolute inset-0 bg-[#000] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsRedditStatsOpen(true)}
+                className="group relative overflow-hidden bg-transparent border border-[#1B0624]/20 text-[#1B0624] font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer hover:border-[#1B0624] transition-colors duration-300 min-w-[200px]"
+              >
+                <span className="relative z-10">Why Reddit?</span>
+              </motion.button>
+            </motion.div>
+          </div>
 
         </main>
       </section>
@@ -288,71 +363,91 @@ export default function Home() {
           {/* Asymmetrical Bento Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8 pt-6 relative border-none">
 
-            {/* Card 1 - Wide Block Spanning 2 Columns */}
+            {/* Card 1 */}
             <motion.div
+              onMouseEnter={() => setExpandedCard(0)}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-              className="md:col-span-2 relative flex flex-col justify-end gap-6 p-10 md:p-14 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
-              <Spotlight size={300} />
+              className={`${expandedCard === 0 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+            >
+              <Spotlight size={expandedCard === 0 ? 300 : 200} />
 
-              <div className="absolute top-10 right-10 w-16 h-16 rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-500 rotate-0 group-hover:rotate-[360deg]">
-                <TrendingUp size={24} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 ${expandedCard === 0 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-500 rotate-0 group-hover:rotate-[360deg]`}>
+                <TrendingUp size={expandedCard === 0 ? 24 : 20} strokeWidth={1.5} />
               </div>
 
               <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity">
                 <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-01</span>
               </div>
 
-              <div className="relative z-10 mt-auto">
-                <h3 className="font-['Instrument_Serif'] font-light text-[40px] md:text-[56px] text-black leading-[0.9] tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">Reddit Growth Campaigns</h3>
-                <p className="font-sans text-[15px] text-black/60 font-normal leading-[1.7] max-w-[380px]">
+              <motion.div className="relative z-10 mt-auto">
+                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 0 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-500`}>
+                  Reddit Growth<br />Campaigns
+                </motion.h3>
+                <motion.p className={`font-sans ${expandedCard === 0 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 0 ? 'max-w-[380px]' : ''} transition-all duration-500`}>
                   We write posts and comments that belong in the communities where your buyers hang out. Content that people actually engage with and come back to - because it was written to fit, not to sell.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             </motion.div>
 
-            {/* Card 2 - Vertical Single Column */}
+            {/* Card 2 */}
             <motion.div
+              onMouseEnter={() => setExpandedCard(1)}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
-              className="md:col-span-1 relative flex flex-col justify-between p-8 md:p-10 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
-              <Spotlight size={200} />
+              className={`${expandedCard === 1 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+            >
+              <Spotlight size={expandedCard === 1 ? 300 : 200} />
 
-              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black mb-2 relative z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-colors duration-500">
-                <Search size={20} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 ${expandedCard === 1 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-500 rotate-0 group-hover:rotate-[360deg]`}>
+                <Search size={expandedCard === 1 ? 24 : 20} strokeWidth={1.5} />
               </div>
 
-              <div className="relative z-10 mt-16">
-                <h3 className="font-['Instrument_Serif'] font-light text-[32px] md:text-[40px] text-black leading-[1] mb-3 group-hover:pl-2 transition-all duration-500 border-l border-transparent group-hover:border-black/20">AI Search Optimization</h3>
-                <p className="font-sans text-[14px] text-black/50 font-normal leading-[1.6]">
+              <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity">
+                <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-02</span>
+              </div>
+
+              <motion.div className="relative z-10 mt-auto">
+                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 1 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-500`}>
+                  AI Search<br />Optimization
+                </motion.h3>
+                <motion.p className={`font-sans ${expandedCard === 1 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 1 ? 'max-w-[380px]' : ''} transition-all duration-500`}>
                   When someone asks ChatGPT or Perplexity about your category, your brand should be part of the answer. We make that happen through strategic Reddit content that AI tools pick up and reference.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             </motion.div>
 
-            {/* Card 3 - Vertical Single Column */}
+            {/* Card 3 */}
             <motion.div
+              onMouseEnter={() => setExpandedCard(2)}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
-              className="md:col-span-1 relative flex flex-col justify-between p-8 md:p-10 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]">
-              <Spotlight size={200} />
+              className={`${expandedCard === 2 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+            >
+              <Spotlight size={expandedCard === 2 ? 300 : 200} />
 
-              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black mb-2 relative z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-colors duration-500">
-                <Radar size={20} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 ${expandedCard === 2 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-500 rotate-0 group-hover:rotate-[360deg]`}>
+                <Radar size={expandedCard === 2 ? 24 : 20} strokeWidth={1.5} />
               </div>
 
-              <div className="relative z-10 mt-16">
-                <h3 className="font-['Instrument_Serif'] font-light text-[32px] md:text-[40px] text-black leading-[1] mb-3 group-hover:pl-2 transition-all duration-500 border-l border-transparent group-hover:border-black/20">Buyer Intent Monitoring</h3>
-                <p className="font-sans text-[14px] text-black/50 font-normal leading-[1.6]">
+              <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity">
+                <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-03</span>
+              </div>
+
+              <motion.div className="relative z-10 mt-auto">
+                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 2 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-500`}>
+                  Buyer Intent<br />Monitoring
+                </motion.h3>
+                <motion.p className={`font-sans ${expandedCard === 2 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 2 ? 'max-w-[380px]' : ''} transition-all duration-500`}>
                   Our research tools scan Reddit daily for people actively looking for solutions like yours, and we surface those conversations so your team can act on them while they're still fresh.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -408,6 +503,12 @@ export default function Home() {
 
       {/* Footer Seamlessly Blending */}
       <Footer />
+
+      {/* Reddit Stats Overlay Full Screen Modal */}
+      <RedditStatsOverlay 
+        isOpen={isRedditStatsOpen} 
+        onClose={() => setIsRedditStatsOpen(false)} 
+      />
 
     </div>
   )

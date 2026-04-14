@@ -1,5 +1,7 @@
 import { cn } from "../../lib/utils";
 
+import React from 'react';
+
 interface ImageSource {
     src: string;
     alt: string;
@@ -7,7 +9,7 @@ interface ImageSource {
 
 interface ShowImageListItemProps {
     text: string;
-    subtext?: string;
+    subtext?: React.ReactNode;
     images: [ImageSource, ImageSource];
 }
 
@@ -20,13 +22,19 @@ function RevealImageListItem({ text, subtext, images }: ShowImageListItemProps) 
         <div className="group relative w-full overflow-visible py-8 md:py-16 border-t border-black/10 hover:bg-black/[0.015] transition-colors duration-500 cursor-pointer">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-4 md:px-8">
                 <div className="flex flex-col gap-2 md:gap-4 max-w-[80%] pr-4 z-10">
-                    <span className="font-['Instrument_Serif'] font-light text-[36px] md:text-[56px] lg:text-[72px] text-[#1B0624] tracking-tight leading-none group-hover:translate-x-4 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
-                        {text}
-                    </span>
-                    {subtext && (
-                        <span className="font-sans text-[14px] md:text-[16px] text-black/60 font-normal leading-[1.6] group-hover:translate-x-4 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
-                            {subtext}
+                    <div className="group-hover:translate-x-4 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)]">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#1B0624]/60 border border-[#1B0624]/10 rounded-full bg-[#1B0624]/[0.02]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500/80 shrink-0" />
+                            Under NDA
                         </span>
+                        <span className="block font-['Instrument_Serif'] font-light text-[36px] md:text-[56px] lg:text-[72px] text-[#1B0624] tracking-tight leading-none">
+                            {text}
+                        </span>
+                    </div>
+                    {subtext && (
+                        <div className="font-sans text-[14px] md:text-[15px] text-black/60 font-normal leading-[1.6] group-hover:translate-x-4 transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] max-w-xl">
+                            {subtext}
+                        </div>
                     )}
                 </div>
             </div>

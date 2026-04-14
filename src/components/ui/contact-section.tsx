@@ -6,13 +6,21 @@ export function ContactSection() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setStatus('submitting');
-        // Fake network request for demo purposes
-        setTimeout(() => {
-            setStatus('success');
-            // Reset after some time
-            setTimeout(() => setStatus('idle'), 5000);
-        }, 1500);
+        
+        const formData = new FormData(e.currentTarget);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const message = formData.get('message');
+
+        const subject = encodeURIComponent(`New Inquiry from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`);
+        
+        window.location.href = `mailto:ognjen@exword.co?subject=${subject}&body=${body}`;
+
+        setStatus('success');
+        // Reset after some time
+        setTimeout(() => setStatus('idle'), 5000);
     };
 
     return (
@@ -50,6 +58,7 @@ export function ContactSection() {
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
                                             required
                                             placeholder=" "
                                             className="w-full bg-transparent border-b border-white/20 pb-4 font-sans text-[16px] text-white placeholder-transparent focus:outline-none focus:border-white transition-colors peer"
@@ -64,6 +73,7 @@ export function ContactSection() {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="email"
                                             required
                                             placeholder=" "
                                             className="w-full bg-transparent border-b border-white/20 pb-4 font-sans text-[16px] text-white placeholder-transparent focus:outline-none focus:border-white transition-colors peer"
@@ -79,6 +89,7 @@ export function ContactSection() {
                                     <input
                                         type="tel"
                                         id="phone"
+                                        name="phone"
                                         placeholder=" "
                                         className="w-full bg-transparent border-b border-white/20 pb-4 font-sans text-[16px] text-white placeholder-transparent focus:outline-none focus:border-white transition-colors peer"
                                     />
@@ -91,6 +102,7 @@ export function ContactSection() {
                                 <div className="relative group mt-4">
                                     <textarea
                                         id="message"
+                                        name="message"
                                         required
                                         rows={4}
                                         placeholder=" "

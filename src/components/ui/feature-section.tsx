@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { cn } from "../../lib/utils"
 import { FeatureShapeCanvas } from "./feature-shapes"
 import { Link } from "react-router-dom"
@@ -81,16 +81,16 @@ export function FeatureSteps({
                     )}
                 </div>
 
-                <div className="flex flex-col w-full items-start">
+                <div className="flex flex-col md:flex-row w-full gap-12 lg:gap-24 pt-8">
 
-                    {/* Full Width Interactive Editorial List */}
-                    <div className="w-full flex flex-col pt-4">
+                    {/* Left Side: Editorial List (Static Height) */}
+                    <div className="w-full md:w-1/2 flex flex-col border-b border-black/10 md:border-none">
                         {features.map((feature, index) => {
                             const isActive = index === currentFeature;
                             return (
                                 <motion.div
                                     key={index}
-                                    className="group relative flex flex-col cursor-pointer border-t border-black/10 py-8 lg:py-10 transition-colors hover:bg-black/[0.015]"
+                                    className="group relative flex flex-col cursor-pointer border-t border-black/10 py-6 lg:py-8 transition-colors hover:bg-black/[0.015]"
                                     onClick={() => {
                                         setCurrentFeature(index)
                                         setProgress(0)
@@ -99,41 +99,14 @@ export function FeatureSteps({
                                     animate={{ opacity: isActive ? 1 : 0.4 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <div className="flex items-start md:items-center justify-between w-full pr-4">
-                                        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                                            <span className="font-sans font-semibold text-[10px] tracking-[0.2em] text-[#1B0624] opacity-50 shrink-0 mt-2 md:mt-0">
-                                                [ {String(index + 1).padStart(2, '0')} ]
-                                            </span>
-                                            <h3 className="font-['Instrument_Serif'] text-[32px] md:text-[48px] font-light text-[#1B0624] tracking-tight group-hover:translate-x-3 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
-                                                {feature.title || feature.step}
-                                            </h3>
-                                        </div>
+                                    <div className="flex items-center gap-4 md:gap-6 pr-4">
+                                        <span className="font-sans font-semibold text-[10px] tracking-[0.2em] text-[#1B0624] opacity-50 shrink-0">
+                                            [ {String(index + 1).padStart(2, '0')} ]
+                                        </span>
+                                        <h3 className="font-['Instrument_Serif'] text-[28px] md:text-[36px] lg:text-[44px] font-light text-[#1B0624] tracking-tight group-hover:translate-x-3 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                                            {feature.title || feature.step}
+                                        </h3>
                                     </div>
-
-                                    <AnimatePresence initial={false}>
-                                        {isActive && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                                className="overflow-hidden w-full"
-                                            >
-                                                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 pt-8 pb-4 md:pl-[74px] md:pr-10">
-                                                    <div className="flex-1 md:max-w-md w-full">
-                                                        <p className="font-sans text-[14px] md:text-[16px] leading-[1.7] text-black/60 font-light">
-                                                            {feature.content}
-                                                        </p>
-                                                    </div>
-                                                    <div className="flex-1 w-full h-[250px] md:h-[400px] relative group flex items-center justify-center">
-                                                        <div className="w-full h-full absolute inset-0 transition-transform transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.05]">
-                                                            <FeatureShapeCanvas index={index} />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
 
                                     {/* Progress line indicator visible only when active */}
                                     {isActive && (
@@ -147,16 +120,40 @@ export function FeatureSteps({
                                 </motion.div>
                             )
                         })}
-                        <div className="border-t border-black/10 w-full mb-12" />
+                        
+                      </div>
 
-                        {/* See All Services Button */}
-                        <div className="flex justify-center w-full relative z-10 px-8">
-                            <Link to="/services" className="group relative overflow-hidden bg-black text-white font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.1)] transition-shadow">
-                                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">See all services</span>
-                                <div className="absolute inset-0 bg-[#fbfbf9] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
-                            </Link>
-                        </div>
+                    {/* Right Side: Active Content + Isolated Canvas (Zero Height Shifting) */}
+                    <div className="w-full md:w-1/2 md:sticky md:top-32 md:self-start relative min-h-[450px] md:min-h-[550px] flex flex-col justify-center">
+                        {features.map((feature, index) => {
+                            const isActive = index === currentFeature;
+                            return (
+                                <div 
+                                    key={`content-${index}`} 
+                                    className={`absolute inset-0 flex flex-col justify-center gap-6 md:gap-10 transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}
+                                >
+                                    <div className="w-full h-[250px] md:h-[350px] relative group flex items-center justify-center">
+                                        <div className="w-full h-full absolute inset-0 transition-transform transform duration-[2.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]">
+                                            <FeatureShapeCanvas index={index} isActive={isActive} />
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:pr-12 md:pl-4">
+                                        <p className="font-sans text-[15px] md:text-[17px] leading-[1.7] text-black/70 font-light">
+                                            {feature.content}
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
+                </div>
+
+                {/* Sub-Section Button Centered Below Both Columns */}
+                <div className="w-full flex justify-center mt-16 md:mt-24 pt-8 relative z-20">
+                  <Link to="/services" className="group relative overflow-hidden bg-[#1B0624] text-white font-sans font-medium text-[15px] md:text-[17px] px-[36px] md:px-[42px] py-[16px] md:py-[18px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(27,6,36,0.15)] hover:shadow-none transition-shadow text-center">
+                     <span className="relative z-10 transition-colors duration-300 group-hover:text-[#1B0624]">See All Services</span>
+                     <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
+                  </Link>
                 </div>
             </div>
         </div>
