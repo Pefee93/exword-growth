@@ -24,7 +24,7 @@ export function ContactSection() {
     };
 
     return (
-        <div className="w-full px-4 md:px-8">
+        <div id="contact" className="w-full px-4 md:px-8">
             <section className="relative w-full bg-[#050505] text-[#fbfbf9] px-8 md:px-16 pt-10 pb-20 overflow-hidden">
                 {/* Subtle background texture/glow */}
                 <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none translate-y-1/2 translate-x-1/3" />

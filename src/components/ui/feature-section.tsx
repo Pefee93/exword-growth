@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { cn } from "../../lib/utils"
 import { FeatureShapeCanvas } from "./feature-shapes"
@@ -24,23 +24,8 @@ export function FeatureSteps({
     className,
     title = "What we do for SaaS teams",
     subtitle = "We plug into your team as your organic growth partner—strategy, execution, and continuous optimization.",
-    autoPlayInterval = 4000,
 }: FeatureStepsProps) {
     const [currentFeature, setCurrentFeature] = useState(0)
-    const [progress, setProgress] = useState(0)
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            if (progress < 100) {
-                setProgress((prev) => prev + 100 / (autoPlayInterval / 100))
-            } else {
-                setCurrentFeature((prev) => (prev + 1) % features.length)
-                setProgress(0)
-            }
-        }, 100)
-
-        return () => clearInterval(timer)
-    }, [progress, features.length, autoPlayInterval])
 
     return (
         <div className={cn("p-8 md:p-12 w-full max-w-[1400px] mx-auto", className)}>
@@ -81,64 +66,53 @@ export function FeatureSteps({
                     )}
                 </div>
 
-                <div className="flex flex-col md:flex-row w-full gap-12 lg:gap-24 pt-8">
+                <div className="flex flex-col md:flex-row w-full gap-12 lg:gap-24 pt-8 relative items-start">
 
-                    {/* Left Side: Editorial List (Static Height) */}
-                    <div className="w-full md:w-1/2 flex flex-col border-b border-black/10 md:border-none">
+                    {/* Left Side: Editorial List */}
+                    <div className="w-full md:w-1/2 flex flex-col pt-8">
                         {features.map((feature, index) => {
                             const isActive = index === currentFeature;
                             return (
                                 <motion.div
                                     key={index}
-                                    className="group relative flex flex-col cursor-pointer border-t border-black/10 py-6 lg:py-8 transition-colors hover:bg-black/[0.015]"
+                                    onViewportEnter={() => setCurrentFeature(index)}
+                                    viewport={{ margin: "-45% 0px -45% 0px" }}
+                                    className={`group relative flex flex-col cursor-pointer py-16 md:py-24 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'bg-[#FDF9F1] pl-6 md:pl-10 border-l-4 border-[#1B0624] shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]' : 'bg-transparent border-l-4 border-transparent pl-4 opacity-30 hover:opacity-60 hover:bg-black/[0.015]'}`}
                                     onClick={() => {
                                         setCurrentFeature(index)
-                                        setProgress(0)
                                     }}
-                                    initial={{ opacity: 0.8 }}
-                                    animate={{ opacity: isActive ? 1 : 0.4 }}
-                                    transition={{ duration: 0.5 }}
                                 >
                                     <div className="flex items-center gap-4 md:gap-6 pr-4">
-                                        <span className="font-sans font-semibold text-[10px] tracking-[0.2em] text-[#1B0624] opacity-50 shrink-0">
+                                        <span className={`font-sans font-bold text-[11px] md:text-[13px] tracking-[0.2em] uppercase shrink-0 transition-colors ${isActive ? 'text-[#FF4500]' : 'text-[#1B0624]/50'}`}>
                                             [ {String(index + 1).padStart(2, '0')} ]
                                         </span>
-                                        <h3 className="font-['Instrument_Serif'] text-[28px] md:text-[36px] lg:text-[44px] font-light text-[#1B0624] tracking-tight group-hover:translate-x-3 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                                        <h3 className={`font-['Instrument_Serif'] text-[28px] md:text-[36px] lg:text-[46px] transition-all duration-500 tracking-tight ${isActive ? 'font-medium text-[#1B0624]' : 'font-light text-[#1B0624]'}`}>
                                             {feature.title || feature.step}
                                         </h3>
                                     </div>
-
-                                    {/* Progress line indicator visible only when active */}
-                                    {isActive && (
-                                        <motion.div
-                                            className="absolute bottom-[-1px] left-0 h-[1px] bg-[#1B0624]"
-                                            initial={{ width: "0%" }}
-                                            animate={{ width: "100%" }}
-                                            transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
-                                        />
-                                    )}
                                 </motion.div>
                             )
                         })}
                         
+                        
                       </div>
 
-                    {/* Right Side: Active Content + Isolated Canvas (Zero Height Shifting) */}
-                    <div className="w-full md:w-1/2 md:sticky md:top-32 md:self-start relative min-h-[450px] md:min-h-[550px] flex flex-col justify-center">
+                    {/* Right Side: Active Content + Isolated Canvas */}
+                    <div className="w-full md:w-1/2 sticky top-32 min-h-[400px] md:min-h-[550px] flex flex-col justify-center pt-8">
                         {features.map((feature, index) => {
                             const isActive = index === currentFeature;
                             return (
                                 <div 
                                     key={`content-${index}`} 
-                                    className={`absolute inset-0 flex flex-col justify-center gap-6 md:gap-10 transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}
+                                    className={`absolute inset-0 flex flex-col justify-center gap-8 md:gap-14 transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}
                                 >
                                     <div className="w-full h-[250px] md:h-[350px] relative group flex items-center justify-center">
                                         <div className="w-full h-full absolute inset-0 transition-transform transform duration-[2.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.03]">
                                             <FeatureShapeCanvas index={index} isActive={isActive} />
                                         </div>
                                     </div>
-                                    <div className="w-full md:pr-12 md:pl-4">
-                                        <p className="font-sans text-[15px] md:text-[17px] leading-[1.7] text-black/70 font-light">
+                                    <div className="w-full md:pr-12 md:pl-8">
+                                        <p className="font-sans text-[18px] md:text-[22px] leading-[1.6] text-[#1B0624]/90 font-light mix-blend-multiply">
                                             {feature.content}
                                         </p>
                                     </div>
@@ -149,7 +123,7 @@ export function FeatureSteps({
                 </div>
 
                 {/* Sub-Section Button Centered Below Both Columns */}
-                <div className="w-full flex justify-center mt-16 md:mt-24 pt-8 relative z-20">
+                <div className="w-full flex justify-center mt-12 md:mt-24 pt-8 relative z-20">
                   <Link to="/services" className="group relative overflow-hidden bg-[#1B0624] text-white font-sans font-medium text-[15px] md:text-[17px] px-[36px] md:px-[42px] py-[16px] md:py-[18px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(27,6,36,0.15)] hover:shadow-none transition-shadow text-center">
                      <span className="relative z-10 transition-colors duration-300 group-hover:text-[#1B0624]">See All Services</span>
                      <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />

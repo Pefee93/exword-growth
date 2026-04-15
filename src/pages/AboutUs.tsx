@@ -155,7 +155,7 @@ export default function AboutUs() {
 
                 {/* Founder Profile */}
                 <div className="w-full px-4 md:px-8">
-                    <section className="w-full bg-[#050505] text-[#fbfbf9] pt-24 pb-12 md:pt-32 md:pb-16 px-6 rounded-t-[3rem] md:rounded-t-[4rem]">
+                    <section className="relative w-full bg-[#F4EFE6] text-[#1B0624] pt-24 pb-12 md:pt-32 md:pb-16 px-6 rounded-t-[3rem] md:rounded-t-[4rem] transition-colors duration-300 shadow-[0_-20px_60px_-15px_rgba(27,6,36,0.05),inset_0_2px_0_rgba(255,255,255,0.6)] z-10">
                         <div className="w-full max-w-[1200px] mx-auto flex flex-col md:flex-row items-center md:items-start gap-16 md:gap-24">
                             <div className="w-full md:w-5/12 shrink-0">
                                 <div className="w-full relative rounded-t-[10rem] rounded-b-xl overflow-hidden aspect-[3/4] shadow-2xl">
@@ -168,15 +168,15 @@ export default function AboutUs() {
                             </div>
                             <div className="w-full md:w-7/12 flex flex-col justify-center h-full pt-0 md:pt-12">
                                 <div className="flex flex-col gap-2 mb-12">
-                                    <h2 className="font-['Instrument_Serif'] text-[56px] md:text-[80px] font-light leading-[1] text-[#fbfbf9] tracking-tight">
+                                    <h2 className="font-['Instrument_Serif'] text-[56px] md:text-[80px] font-light leading-[1] text-[#1B0624] tracking-tight">
                                         Ognjen Srdanovic
                                     </h2>
-                                    <span className="font-sans font-bold text-[13px] tracking-[0.2em] text-[#fbfbf9]/60 uppercase">
+                                    <span className="font-sans font-bold text-[13px] tracking-[0.2em] text-[#1B0624]/60 uppercase">
                                         CEO & Founder
                                     </span>
                                 </div>
 
-                                <div className="flex flex-col gap-6 font-sans text-[15px] md:text-[18px] leading-[1.8] text-[#fbfbf9]/80 font-light max-w-[600px]">
+                                <div className="flex flex-col gap-6 font-sans text-[15px] md:text-[18px] leading-[1.8] text-[#1B0624]/80 font-light max-w-[600px]">
                                     <p>
                                         With a Master's degree in Philosophy and years spent in online communities long before it became a marketing channel, building a career around community-driven growth was a natural fit. The analytical thinking and creative problem-solving that came from studying philosophy turned out to be surprisingly useful tools for understanding how people discover products, form opinions, and decide what to trust online.
                                     </p>
@@ -194,7 +194,7 @@ export default function AboutUs() {
                 
                 {/* Global Footer */}
                 <div className="w-full">
-                    <Footer />
+                    <Footer theme="light" />
                 </div>
             </main>
         </div>

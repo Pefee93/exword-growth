@@ -175,7 +175,7 @@ export function CaseStudiesPreviewSection() {
                         Case<br />Studies.
                     </h2>
                     <div className="flex flex-col gap-6 md:max-w-sm border-l border-black/10 pl-6 md:pb-4">
-                        <p className="font-sans text-[14px] md:text-[16px] text-black/50 font-normal leading-[1.6]">
+                        <p className="font-sans text-[18px] md:text-[22px] text-black/60 font-medium leading-[1.6]">
                             Real results from the companies we work with.
                         </p>
                         <button className="text-left font-sans text-[12px] font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-50 transition-opacity">
