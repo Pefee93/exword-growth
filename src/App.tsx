@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
+import NotFound from './pages/NotFound';
 import { Loader } from './components/ui/loader';
 
 // Run immediately to override browser's default scroll restoration before React even mounts
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </ThemeProvider>
