@@ -84,6 +84,19 @@ export default function Home() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Force scroll to top on fresh load if no hash is present
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+      const t = setTimeout(() => window.scrollTo(0, 0), 100);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       setIsPastHero(window.scrollY > window.innerHeight * 1.05);

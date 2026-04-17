@@ -35,29 +35,29 @@ const studies = [
     {
         text: "RPG Game",
         subtext: (
-            <div className="flex flex-col gap-6 mt-2 mb-2">
-                <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-black tracking-wide text-[16px]">From an Up-and-Comer to a Viral Hit</p>
-                    <p>Helped an up-and-coming RPG game grow from niche recognition to one of the most talked-about titles on Reddit. Built sustained hype through strategic, organic posting and community engagement, transforming a small, dedicated following into a thriving player base with an unmatched increase in authentic visibility and discussion.</p>
+            <div className="flex flex-col gap-8 md:gap-10 mt-4 mb-4">
+                <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-black tracking-wide text-[18px] md:text-[22px]">From an Up-and-Comer to a Viral Hit</p>
+                    <p className="font-sans text-[15px] md:text-[17px] leading-[1.7] text-black/80 max-w-3xl">Helped an up-and-coming RPG game grow from niche recognition to one of the most talked-about titles on Reddit. Built sustained hype through strategic, organic posting and community engagement, transforming a small, dedicated following into a thriving player base with an unmatched increase in authentic visibility and discussion.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Reddit Performance (First 3 Months)</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 1,929,000 Total Views</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 3,522 Organic Comments</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 89% Upvote Rate</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 20+ High-Ranking SEO Posts</li>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Reddit Performance (First 3 Months)</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 1,929,000 Total Views</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 3,522 Organic Comments</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 89% Upvote Rate</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 20+ High-Ranking SEO Posts</li>
                         </ul>
                     </div>
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Overall Campaign Impact</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 3000%+ Growth in Organic Brand Presence</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> Contributed to Selling 1M+ Units</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> Community Expansion from ~40K to 300K+ Members</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 40+ Viral Posts Reaching 100K+ Views Each</li>
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Overall Campaign Impact</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 3000%+ Growth in Organic Brand Presence</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> Contributed to Selling 1M+ Units</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> Community Expansion from ~40K to 300K+ Members</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 40+ Viral Posts Reaching 100K+ Views Each</li>
                         </ul>
                     </div>
                 </div>
@@ -71,29 +71,29 @@ const studies = [
     {
         text: "Creative Marketplace",
         subtext: (
-            <div className="flex flex-col gap-6 mt-2 mb-2">
-                <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-black tracking-wide text-[16px]">Establishing Authentic Presence & Growing the Brand</p>
-                    <p>Helped an emerging creative marketplace find its audience and establish itself as one of the most positively received brands on Reddit. Forged enduring connections with industry thought leaders and built dozens of meaningful collaborations with top-tier influencers, driving visibility, trust, and engagement across key communities.</p>
+            <div className="flex flex-col gap-8 md:gap-10 mt-4 mb-4">
+                <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-black tracking-wide text-[18px] md:text-[22px]">Establishing Authentic Presence & Growing the Brand</p>
+                    <p className="font-sans text-[15px] md:text-[17px] leading-[1.7] text-black/80 max-w-3xl">Helped an emerging creative marketplace find its audience and establish itself as one of the most positively received brands on Reddit. Forged enduring connections with industry thought leaders and built dozens of meaningful collaborations with top-tier influencers, driving visibility, trust, and engagement across key communities.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Reddit Performance (First 3 Months)</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 1,240,000 Total Views</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 3,556 Organic Comments</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 96% Upvote Rate</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 25+ High-Ranking SEO & GEO Posts</li>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Reddit Performance (First 3 Months)</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 1,240,000 Total Views</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 3,556 Organic Comments</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 96% Upvote Rate</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 25+ High-Ranking SEO & GEO Posts</li>
                         </ul>
                     </div>
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Overall Campaign Impact</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 2500%+ Growth in Organic Brand Presence</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 15+ High-Quality Influencer Collaborations</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> Forged Lasting Relationships</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 300+ High-Quality B2B Conversions</li>
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Overall Campaign Impact</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 2500%+ Growth in Organic Brand Presence</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 15+ High-Quality Influencer Collaborations</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> Forged Lasting Relationships</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 300+ High-Quality B2B Conversions</li>
                         </ul>
                     </div>
                 </div>
@@ -107,27 +107,27 @@ const studies = [
     {
         text: "Premium Fragrance Brand",
         subtext: (
-            <div className="flex flex-col gap-6 mt-2 mb-2">
-                <div className="flex flex-col gap-2">
-                    <p className="font-semibold text-black tracking-wide text-[16px]">Community Growth across key spaces</p>
-                    <p>Elevated a modern fragrance brand through authentic storytelling and community engagement. Strengthened brand reputation and authority on Reddit while building meaningful collaborations with key figures in the industry.</p>
+            <div className="flex flex-col gap-8 md:gap-10 mt-4 mb-4">
+                <div className="flex flex-col gap-3">
+                    <p className="font-semibold text-black tracking-wide text-[18px] md:text-[22px]">Community Growth across key spaces</p>
+                    <p className="font-sans text-[15px] md:text-[17px] leading-[1.7] text-black/80 max-w-3xl">Elevated a modern fragrance brand through authentic storytelling and community engagement. Strengthened brand reputation and authority on Reddit while building meaningful collaborations with key figures in the industry.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Reddit Performance (First 3 Months)</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 1,110,000 Total Views</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 921 Organic Shares</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 88% Upvote Rate</li>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Reddit Performance (First 3 Months)</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 1,110,000 Total Views</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 921 Organic Shares</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 88% Upvote Rate</li>
                         </ul>
                     </div>
-                    <div className="flex flex-col gap-2">
-                        <span className="font-bold text-black text-[11px] uppercase tracking-[0.1em] border-b border-black/10 pb-1 mb-1">Overall Campaign Impact</span>
-                        <ul className="flex flex-col gap-1.5 list-none p-0 text-[13px] md:text-[14px]">
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 1400%+ Growth in Organic Brand Presence</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> 2,000+ Products Sold Through Community</li>
-                            <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-1.5 shrink-0"/> Multiple Viral Posts Reaching 100K+ Views</li>
+                    <div className="flex flex-col gap-3">
+                        <span className="font-bold text-black text-[12px] md:text-[13px] uppercase tracking-[0.1em] border-b border-black/10 pb-2 mb-2">Overall Campaign Impact</span>
+                        <ul className="flex flex-col gap-2.5 list-none p-0 text-[14px] md:text-[16px] text-black/80">
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 1400%+ Growth in Organic Brand Presence</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> 2,000+ Products Sold Through Community</li>
+                            <li className="flex items-start gap-3"><div className="w-1.5 h-1.5 rounded-full bg-[#1B0624]/60 mt-2 shrink-0"/> Multiple Viral Posts Reaching 100K+ Views</li>
                         </ul>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ const studies = [
 
 export function CaseStudiesPreviewSection() {
     return (
-        <section className="relative z-0 w-full overflow-hidden border-y border-black/5 bg-[#fbfbf9]">
+        <section id="case-studies" className="relative z-0 w-full overflow-hidden border-y border-black/5 bg-[#fbfbf9]">
             {/* Flickering Background */}
             <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
                 <FlickeringGrid

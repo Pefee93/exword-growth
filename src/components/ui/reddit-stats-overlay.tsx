@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronDown } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface RedditStatsOverlayProps {
   isOpen: boolean;
@@ -7,15 +8,34 @@ interface RedditStatsOverlayProps {
 }
 
 export function RedditStatsOverlay({ isOpen, onClose }: RedditStatsOverlayProps) {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setHasScrolled(false);
+    }
+  }, [isOpen]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    if (scrollTop > 50) setHasScrolled(true);
+
+    // Slide up to close when hitting the very bottom of the spacer area
+    if (hasScrolled && scrollTop + clientHeight >= scrollHeight - 5) {
+      onClose();
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FDF9F1]/95 backdrop-blur-xl overflow-y-auto px-4 py-12 md:p-12"
+          initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, filter: 'blur(5px)', y: -100 }}
+          transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
+          onScroll={handleScroll}
+          className="fixed inset-0 z-[9999] bg-[#FDF9F1]/95 backdrop-blur-xl overflow-y-auto px-4 py-12 md:p-12 scroll-smooth"
         >
           {/* subtle noise texture */}
           <div className="absolute inset-0 z-0 opacity-[0.05] mix-blend-multiply pointer-events-none bg-noise" />
@@ -32,7 +52,7 @@ export function RedditStatsOverlay({ isOpen, onClose }: RedditStatsOverlayProps)
             <X size={28} className="group-hover:rotate-90 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" strokeWidth={1.5} />
           </motion.button>
 
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto min-h-full flex flex-col justify-center">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto pt-12 md:pt-20 pb-40">
             
             {/* Header Section */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-16 lg:mb-24">
@@ -158,6 +178,24 @@ export function RedditStatsOverlay({ isOpen, onClose }: RedditStatsOverlayProps)
               </motion.div>
 
             </div>
+
+            {/* Scroll to Exit Indicator */}
+            <div 
+              className="mt-32 flex flex-col items-center gap-4 text-black/30 group"
+            >
+              <span className="font-sans text-[12px] uppercase tracking-[0.3em] font-semibold group-hover:text-black/50 transition-colors">
+                Keep scrolling to return
+              </span>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              >
+                <ChevronDown size={24} strokeWidth={1} />
+              </motion.div>
+            </div>
+
+            {/* Hidden spacer to allow "scrolling past" the end */}
+            <div className="h-[20vh]" />
           </div>
         </motion.div>
       )}

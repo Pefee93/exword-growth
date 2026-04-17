@@ -47,18 +47,23 @@ const TestimonialsColumn = (props: {
         <div className={props.className}>
             <motion.ul
                 animate={{
-                    translateY: "-50%",
+                    y: "-50%",
+                }}
+                style={{
+                    backfaceVisibility: "hidden",
+                    WebkitFontSmoothing: "antialiased",
+                    transform: "translateZ(0)"
                 }}
                 transition={{
-                    duration: props.duration || 10,
+                    duration: props.duration || 20,
                     repeat: Infinity,
                     ease: "linear",
                     repeatType: "loop",
                 }}
-                className="flex flex-col gap-6 pb-6 bg-transparent transition-colors duration-300 list-none m-0 p-0"
+                className="flex flex-col gap-6 pb-6 bg-transparent transition-colors duration-300 list-none m-0 p-0 will-change-transform"
             >
                 {[
-                    ...new Array(2).fill(0).map((_, index) => (
+                    ...new Array(6).fill(0).map((_, index) => (
                         <React.Fragment key={index}>
                             {props.testimonials.map(({ text, image, name, role }, i) => (
                                 <motion.li
@@ -163,9 +168,9 @@ export default function TestimonialSection() {
                             role="region"
                             aria-label="Scrolling Testimonials"
                         >
-                            <TestimonialsColumn testimonials={firstColumn} duration={15} />
-                            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-                            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                            <TestimonialsColumn testimonials={firstColumn} duration={20} />
+                            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={25} />
+                            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={23} />
                         </div>
                     </motion.div>
                 </div>

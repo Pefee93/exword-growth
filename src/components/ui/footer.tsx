@@ -51,17 +51,30 @@ export function Footer({ theme = "dark" }: FooterProps) {
                     {/* Quick Links */}
                     <div className="flex flex-col gap-4 w-full md:w-1/3 items-center">
                         <h4 className={`font-sans font-semibold ${textClass} tracking-widest text-[12px] uppercase mb-2`}>Explore</h4>
-                        <a href="#" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Services</a>
-                        <a href="#" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Case Studies</a>
-                        <a href="#" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Company</a>
-                        <a href="#" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Talk to Us</a>
+                        <a href="/services" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Services</a>
+                        <a href="/#case-studies" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Case Studies</a>
+                        <a href="/about" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Company</a>
+                        <a href="/#contact" className={`font-sans text-[14px] ${textMutedClass} ${linkHoverClass} transition-colors duration-200 no-underline`}>Talk to Us</a>
                     </div>
 
                     {/* Socials / Contact */}
                     <div className="flex flex-col w-full md:w-1/3 items-center md:items-end gap-6">
+                        <div className="flex flex-col items-center md:items-end gap-3 max-w-[300px]">
+                            <p className={`font-sans text-[12px] ${textMutedClass} leading-relaxed`}>
+                                Visit our sister company website if you're a indie game developer looking for help with marketing:
+                            </p>
+                            <a 
+                                href="https://www.exword.co" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className={`font-sans text-[13px] ${textClass} font-bold hover:opacity-70 transition-opacity border-b ${isLight ? 'border-[#1B0624]' : 'border-white'} pb-0.5`}
+                            >
+                                exword.co
+                            </a>
+                        </div>
                         <a
                             href="mailto:ognjen@exword.co"
-                            className={`group flex items-center gap-3 ${buttonBgClass} border ${borderClass} px-6 py-3 rounded-full transition-all duration-300 pointer`}
+                            className={`group flex items-center gap-3 ${buttonBgClass} border ${borderClass} px-6 py-3 rounded-full transition-all duration-300 pointer mt-2`}
                         >
                             <Mail className={`w-4 h-4 ${iconClass} transition-colors`} />
                             <span className={`font-sans text-[14px] ${textClass} font-medium tracking-wide`}>ognjen@exword.co</span>
