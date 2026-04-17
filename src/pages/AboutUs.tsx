@@ -44,12 +44,22 @@ export default function AboutUs() {
                         conversations in a way that felt natural, not forced, and we built everything around that idea.
                     </p>
 
-                    <div className="w-full h-[300px] md:h-[500px] overflow-hidden rounded-[2rem] my-4 shadow-xl">
-                        <img
-                            src="/assets/about1.jpg"
-                            alt="ExWord Growth Team"
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                        />
+                    <div className="w-full flex flex-col md:flex-row gap-6 my-8">
+                        <div className="flex-1 bg-white border border-black/5 rounded-[2rem] p-8 md:p-10 shadow-xl flex flex-col justify-center items-center text-center group hover:border-[#FF4500]/30 transition-colors">
+                            <span className="text-[64px] md:text-[80px] font-['Instrument_Serif'] text-[#FF4500] leading-none mb-4 group-hover:scale-110 transition-transform duration-500">
+                                430M+
+                            </span>
+                            <h4 className="font-sans font-bold text-[14px] uppercase tracking-[0.2em] mb-2 text-[#1B0624]">Monthly Active Users</h4>
+                            <p className="font-sans text-[15px] opacity-60 max-w-[250px]">Reddit is the internet's largest focus group, waiting to be tapped into.</p>
+                        </div>
+                        <div className="flex-1 bg-[#1B0624] text-white rounded-[2rem] p-8 md:p-10 shadow-xl flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-[#FF4500] opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300" />
+                            <span className="text-[64px] md:text-[80px] font-['Instrument_Serif'] text-white leading-none mb-4 group-hover:scale-110 transition-transform duration-500">
+                                70%
+                            </span>
+                            <h4 className="font-sans font-bold text-[14px] uppercase tracking-[0.2em] mb-2 text-white/90">Higher Trust Rate</h4>
+                            <p className="font-sans text-[15px] text-white/60 max-w-[250px]">Users trust peer recommendations over traditional B2B advertising.</p>
+                        </div>
                     </div>
 
                     <p>
@@ -70,12 +80,34 @@ export default function AboutUs() {
                         and the places where their buyers spend their downtime and actually make decisions.
                     </p>
 
-                    <div className="w-full h-[300px] md:h-[500px] overflow-hidden rounded-[2rem] my-4 shadow-xl">
-                        <img
-                            src="/assets/about2.jpg"
-                            alt="ExWord Analytics Dashboard"
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                        />
+                    <div className="w-full bg-[#f5f5f3] border border-black/5 rounded-[2rem] p-8 md:p-16 my-8 shadow-xl flex flex-col items-center justify-center relative overflow-hidden">
+                        <div className="absolute w-[200%] h-[200%] left-[-50%] top-[-50%] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+                        
+                        <div className="relative z-10 flex flex-col items-center text-center w-full">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-black/10 shadow-sm mb-8">
+                                <div className="w-2 h-2 rounded-full bg-[#FF4500] animate-pulse" />
+                                <span className="text-[12px] font-bold uppercase tracking-widest text-[#1B0624]">AI Search Impact</span>
+                            </div>
+                            
+                            <h3 className="font-['Instrument_Serif'] font-light text-[36px] md:text-[52px] text-[#1B0624] tracking-tight leading-[1.1] mb-12 max-w-xl">
+                                Authentic community answers are now feeding <span className="italic text-[#FF4500]">Language Models</span>.
+                            </h3>
+                            
+                            <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 w-full">
+                                <div className="flex flex-col bg-white rounded-2xl p-6 shadow-sm border border-black/5 flex-1 min-w-[200px] hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                                    <span className="font-bold text-[32px] text-[#1B0624] leading-none mb-1">100+</span>
+                                    <span className="text-[14px] text-[#FF4500] font-bold uppercase tracking-widest">Brands Scaled</span>
+                                </div>
+                                <div className="flex flex-col bg-white rounded-2xl p-6 shadow-sm border border-black/5 flex-1 min-w-[200px] hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                                    <span className="font-bold text-[32px] text-[#1B0624] leading-none mb-1">3,400%</span>
+                                    <span className="text-[14px] text-[#FF4500] font-bold uppercase tracking-widest">Avg. Growth</span>
+                                </div>
+                                <div className="flex flex-col bg-white rounded-2xl p-6 shadow-sm border border-black/5 flex-1 min-w-[200px] hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                                    <span className="font-bold text-[32px] text-[#1B0624] leading-none mb-1">Top 1%</span>
+                                    <span className="text-[14px] text-[#FF4500] font-bold uppercase tracking-widest">SEO Rankings</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <p>
