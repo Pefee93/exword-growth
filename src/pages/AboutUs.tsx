@@ -111,7 +111,7 @@ export default function AboutUs() {
                     </div>
 
                     <p>
-                        What sets ExWord Growth apart is that we care about what actually moves the needle for your business. 
+                        An important thing about ExWord is that we care about what actually moves the needle for your business. 
                         Community impressions and upvotes are nice, but we measure our work against the things that matter - 
                         qualified leads, pipeline influence, and real conversations with potential buyers. Every post we write, 
                         every community we engage in, and every strategy we build is designed to bring the right people closer 
@@ -193,7 +193,7 @@ export default function AboutUs() {
                                 <div className="w-full relative rounded-t-[10rem] rounded-b-xl overflow-hidden aspect-[3/4] shadow-2xl">
                                     <img
                                         src="/assets/about3.jpg"
-                                        alt="Ognjen Srdanovic - CEO & Founder"
+                                        alt="Ognjen Srdanović - CEO & Founder"
                                         className="w-full h-full object-cover grayscale-[30%] contrast-125 hover:scale-105 transition-transform duration-[2s] ease-in-out"
                                     />
                                 </div>
@@ -201,7 +201,7 @@ export default function AboutUs() {
                             <div className="w-full md:w-7/12 flex flex-col justify-center h-full pt-0 md:pt-12">
                                 <div className="flex flex-col gap-2 mb-12">
                                     <h2 className="font-['Instrument_Serif'] text-[56px] md:text-[80px] font-light leading-[1] text-[#1B0624] tracking-tight">
-                                        Ognjen Srdanovic
+                                        Ognjen Srdanović
                                     </h2>
                                     <span className="font-sans font-bold text-[13px] tracking-[0.2em] text-[#1B0624]/60 uppercase">
                                         CEO & Founder
