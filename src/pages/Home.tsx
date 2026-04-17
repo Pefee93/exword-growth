@@ -328,9 +328,10 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsRedditStatsOpen(true)}
-                className="group relative overflow-hidden bg-transparent border border-[#1B0624]/20 text-[#1B0624] font-sans font-medium text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer hover:border-[#1B0624] transition-colors duration-300 min-w-[200px]"
+                className="group relative overflow-hidden bg-transparent text-[#FF4500] font-sans font-bold text-[15px] px-[32px] py-[16px] rounded-[1000px] cursor-pointer shadow-[0_10px_30px_rgba(255,69,0,0.15)] hover:shadow-none min-w-[200px] border-2 border-[#FF4500]"
               >
-                <span className="relative z-10">Why Reddit?</span>
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Why Reddit?</span>
+                <div className="absolute inset-0 bg-[#FF4500] scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0" />
               </motion.button>
             </motion.div>
           </div>
