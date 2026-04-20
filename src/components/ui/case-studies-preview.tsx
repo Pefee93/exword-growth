@@ -2,18 +2,6 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 import { RevealImageList } from "./reveal-images";
-import { FlickeringGrid } from "./flickering-grid";
-
-
-
-const GRID_CONFIG = {
-  background: {
-    maxOpacity: 0.05,
-    flickerChance: 0.12,
-    squareSize: 8,
-    gridGap: 8,
-  }
-} as const;
 
 const studies = [
     {
