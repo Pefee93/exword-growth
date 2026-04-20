@@ -82,7 +82,7 @@ const TestimonialsColumn = (props: {
                                         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05)",
                                         transition: { type: "spring", stiffness: 400, damping: 17 }
                                     }}
-                                    className="p-10 rounded-3xl border border-white/20 shadow-lg shadow-black/5 max-w-xs w-full bg-white/90 backdrop-blur-md transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                    className="p-10 rounded-3xl border border-white/20 shadow-lg shadow-black/5 max-w-xs w-full bg-[#fbfbf9]/95 transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30"
                                 >
                                     <blockquote className="m-0 p-0">
                                         <p className="text-neutral-800 leading-relaxed font-normal m-0 transition-colors duration-300">
@@ -138,8 +138,8 @@ export default function TestimonialSection() {
 
                 <div className="py-24 relative z-10 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 50, rotate: -2 }}
-                        whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.15 }}
                         transition={{
                             duration: 1.2,

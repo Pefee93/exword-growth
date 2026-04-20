@@ -392,29 +392,30 @@ export default function Home() {
 
             {/* Card 1 */}
             <motion.div
+              layout
               onMouseEnter={() => handleCardHover(0)}
               onMouseLeave={clearHoverTimeout}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-              className={`${expandedCard === 0 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+              className={`${expandedCard === 0 ? 'md:col-span-2' : 'md:col-span-1'} p-8 md:p-10 relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-colors duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
             >
               <Spotlight size={expandedCard === 0 ? 300 : 200} />
 
-              <div className={`absolute top-10 right-10 ${expandedCard === 0 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
-                <TrendingUp size={expandedCard === 0 ? 24 : 20} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 w-14 h-14 rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
+                <TrendingUp size={24} strokeWidth={1.5} />
               </div>
 
               <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity duration-[800ms]">
                 <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-01</span>
               </div>
 
-              <motion.div className="relative z-10 mt-auto">
-                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 0 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+              <motion.div layout="position" className="relative z-10 mt-auto">
+                <motion.h3 layout="position" className="font-['Instrument_Serif'] font-light text-[36px] md:text-[44px] text-black leading-[1.05] tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]">
                   Reddit Growth<br />Campaigns
                 </motion.h3>
-                <motion.p className={`font-sans ${expandedCard === 0 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 0 ? 'max-w-[380px]' : ''} transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+                <motion.p layout="position" className="font-sans text-[15px] text-black/60 font-normal leading-[1.7] max-w-[400px]">
                   We write posts and comments that belong in the communities where your buyers hang out. Content that people actually engage with and come back to - because it was written to fit, not to sell.
                 </motion.p>
               </motion.div>
@@ -422,29 +423,30 @@ export default function Home() {
 
             {/* Card 2 */}
             <motion.div
+              layout
               onMouseEnter={() => handleCardHover(1)}
               onMouseLeave={clearHoverTimeout}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
-              className={`${expandedCard === 1 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+              className={`${expandedCard === 1 ? 'md:col-span-2' : 'md:col-span-1'} p-8 md:p-10 relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-colors duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
             >
               <Spotlight size={expandedCard === 1 ? 300 : 200} />
 
-              <div className={`absolute top-10 right-10 ${expandedCard === 1 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
-                <Search size={expandedCard === 1 ? 24 : 20} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 w-14 h-14 rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
+                <Search size={24} strokeWidth={1.5} />
               </div>
 
               <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity duration-[800ms]">
                 <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-02</span>
               </div>
 
-              <motion.div className="relative z-10 mt-auto">
-                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 1 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+              <motion.div layout="position" className="relative z-10 mt-auto">
+                <motion.h3 layout="position" className="font-['Instrument_Serif'] font-light text-[36px] md:text-[44px] text-black leading-[1.05] tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]">
                   AI Search<br />Optimization
                 </motion.h3>
-                <motion.p className={`font-sans ${expandedCard === 1 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 1 ? 'max-w-[380px]' : ''} transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+                <motion.p layout="position" className="font-sans text-[15px] text-black/60 font-normal leading-[1.7] max-w-[400px]">
                   When someone asks ChatGPT or Perplexity about your category, your brand should be part of the answer. We make that happen through strategic Reddit content that AI tools pick up and reference.
                 </motion.p>
               </motion.div>
@@ -452,29 +454,30 @@ export default function Home() {
 
             {/* Card 3 */}
             <motion.div
+              layout
               onMouseEnter={() => handleCardHover(2)}
               onMouseLeave={clearHoverTimeout}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
-              className={`${expandedCard === 2 ? 'md:col-span-2 p-10 md:p-14' : 'md:col-span-1 p-8 md:p-10'} relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
+              className={`${expandedCard === 2 ? 'md:col-span-2' : 'md:col-span-1'} p-8 md:p-10 relative flex flex-col justify-end gap-6 border border-black/10 hover:border-black/20 hover:bg-black/[0.015] bg-white transition-colors duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2.5rem] overflow-hidden group shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[420px]`}
             >
               <Spotlight size={expandedCard === 2 ? 300 : 200} />
 
-              <div className={`absolute top-10 right-10 ${expandedCard === 2 ? 'w-16 h-16' : 'w-12 h-12'} rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
-                <Radar size={expandedCard === 2 ? 24 : 20} strokeWidth={1.5} />
+              <div className={`absolute top-10 right-10 w-14 h-14 rounded-full border border-black/10 flex items-center justify-center text-black bg-white/50 backdrop-blur-md z-10 group-hover:bg-[#1B0624] group-hover:text-white transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] rotate-0 group-hover:rotate-[180deg]`}>
+                <Radar size={24} strokeWidth={1.5} />
               </div>
 
               <div className="absolute top-6 left-10 opacity-30 group-hover:opacity-10 transition-opacity duration-[800ms]">
                 <span className="font-sans text-xs tracking-[0.3em] font-bold uppercase">SEC-03</span>
               </div>
 
-              <motion.div className="relative z-10 mt-auto">
-                <motion.h3 className={`font-['Instrument_Serif'] font-light ${expandedCard === 2 ? 'text-[40px] md:text-[56px]' : 'text-[32px] md:text-[40px]'} text-black leading-[1] tracking-tight mb-4 group-hover:translate-x-2 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+              <motion.div layout="position" className="relative z-10 mt-auto">
+                <motion.h3 layout="position" className="font-['Instrument_Serif'] font-light text-[36px] md:text-[44px] text-black leading-[1.05] tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]">
                   Buyer Intent<br />Monitoring
                 </motion.h3>
-                <motion.p className={`font-sans ${expandedCard === 2 ? 'text-[15px]' : 'text-[14px]'} text-black/60 font-normal leading-[1.7] ${expandedCard === 2 ? 'max-w-[380px]' : ''} transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}>
+                <motion.p layout="position" className="font-sans text-[15px] text-black/60 font-normal leading-[1.7] max-w-[400px]">
                   Our research tools scan Reddit daily for people actively looking for solutions like yours, and we surface those conversations so your team can act on them while they're still fresh.
                 </motion.p>
               </motion.div>

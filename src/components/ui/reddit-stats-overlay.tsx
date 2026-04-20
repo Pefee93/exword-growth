@@ -195,7 +195,7 @@ export function RedditStatsOverlay({ isOpen, onClose }: RedditStatsOverlayProps)
             </div>
 
             {/* Hidden spacer to allow "scrolling past" the end */}
-            <div className="h-[20vh]" />
+            <div className="h-[60vh]" />
           </div>
         </motion.div>
       )}

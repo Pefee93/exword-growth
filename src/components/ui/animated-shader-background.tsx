@@ -51,7 +51,7 @@ const AnoAI = () => {
             float randomVal = rand(gridId);
             
             // Determine if this cell has a star (higher threshold = more sporadic)
-            float isStar = step(0.96, randomVal); 
+            float isStar = step(0.99, randomVal); 
             
             // Star shape (stretched streak)
             float distLine = length(vec2(gridPos.x * 2.0, gridPos.y * 0.05));
@@ -65,19 +65,24 @@ const AnoAI = () => {
             // Starts fading out below 0.7
             float bottomFade = smoothstep(0.2, 0.7, uv.y);
             
+            float masterOpacity = 0.8; // Lower overall brightness slightly
             // White-ish color
-            vec3 color = vec3(0.9, 0.95, 1.0) * starGlow * isStar * brightness * 1.5 * bottomFade;
+            vec3 color = vec3(0.9, 0.95, 1.0) * starGlow * isStar * brightness * 1.5 * bottomFade * masterOpacity;
             
             // Extra subtle stationary stars
             vec2 staticPos = uv;
             vec2 staticId = floor(staticPos * 20.0);
             vec2 staticGrid = fract(staticPos * 20.0) - 0.5;
             float staticRand = rand(staticId);
-            float isStaticStar = step(0.9, staticRand);
-            float staticDist = length(staticGrid);
-            float staticGlow = smoothstep(0.05, 0.0, staticDist) * (0.5 + 0.5 * sin(iTime * 3.0 + staticRand * 10.0));
             
-            color += vec3(1.0, 1.0, 1.0) * staticGlow * isStaticStar;
+            // Much sparser background dots
+            float isStaticStar = step(0.97, staticRand); 
+            float staticDist = length(staticGrid);
+            
+            // Make them physically smaller and dimmer
+            float staticGlow = smoothstep(0.02, 0.0, staticDist) * (0.3 + 0.3 * sin(iTime * 1.5 + staticRand * 10.0));
+            
+            color += vec3(0.8, 0.8, 0.8) * staticGlow * isStaticStar;
 
             // Output color with alpha based on brightness
             float alpha = length(color) > 0.01 ? length(color) : 0.0;
@@ -92,7 +97,7 @@ const AnoAI = () => {
 
         let frameId: number;
         const animate = () => {
-            material.uniforms.iTime.value += 0.016;
+            material.uniforms.iTime.value += 0.008; // Slower global animation speed
             renderer.render(scene, camera);
             frameId = requestAnimationFrame(animate);
         };
